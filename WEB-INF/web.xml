@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		 xmlns="http://java.sun.com/xml/ns/javaee" 
+		 xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" 
+		 version="3.0">
+  	<welcome-file-list>
+    	<welcome-file>index.html</welcome-file>
+  	</welcome-file-list>
+  	
+  	<!-- 配置文件路径 -->
+  	<context-param>
+    	<param-name>contextConfigLocation</param-name>
+    	<param-value>
+			/WEB-INF/config/applicationContext.xml,
+			/WEB-INF/config/applicationContext-quartz.xml,
+			/WEB-INF/spring-servlet.xml,
+			/WEB-INF/config/spring-init.xml
+		</param-value>
+  	</context-param>
+  	
+  	<!-- 加载spring容器配置 -->
+  	<listener>
+    	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  	</listener>
+  	
+  	<!-- session监听 -->
+  	<listener>
+    	<listener-class>com.zyj.listener.MySessionListener</listener-class>
+  	</listener>
+  	
+  	<!-- 编码过滤 只对POST起作用   GET请求请在tomcat中设置<Connector URIEncoding="UTF-8"/> -->
+  	<filter>
+    	<filter-name>SetCharacterEncoding</filter-name>
+    	<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+    	<async-supported>true</async-supported>
+    	<init-param>
+      		<param-name>encoding</param-name>
+      		<param-value>UTF-8</param-value>
+    	</init-param>
+    	<init-param>
+      		<param-name>forceEncoding</param-name>
+      		<param-value>true</param-value>
+    	</init-param>
+  	</filter>
+  	<filter-mapping>
+    	<filter-name>SetCharacterEncoding</filter-name>
+    	<url-pattern>/*</url-pattern>
+  	</filter-mapping>
+  	
+  	<servlet>
+		<servlet-name>initServlet</servlet-name>
+		<servlet-class>com.zyj.framework.servlet.InitServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+  	
+  	<!-- log4j配置 -->
+  	<servlet>
+    	<servlet-name>log4j</servlet-name>
+    	<servlet-class>com.zyj.framework.servlet.Log4jServlet</servlet-class>
+    	<load-on-startup>1</load-on-startup>
+    	<async-supported>true</async-supported>
+  	</servlet>
+  	
+  	<!-- spring核心控制器 -->
+  	<servlet>
+    	<servlet-name>spring</servlet-name>
+    	<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    	<load-on-startup>1</load-on-startup>
+    	<async-supported>true</async-supported>
+  	</servlet>
+  	<servlet-mapping>
+    	<servlet-name>spring</servlet-name>
+    	<url-pattern>/</url-pattern>
+  	</servlet-mapping>
+  	
+  	<!-- 验证码 -->
+  	<servlet>
+    	<servlet-name>validateCode</servlet-name>
+    	<servlet-class>com.zyj.framework.servlet.ValidateCodeServlet</servlet-class>
+    	<async-supported>true</async-supported>
+  	</servlet>
+  	<servlet-mapping>
+    	<servlet-name>validateCode</servlet-name>
+    	<url-pattern>/validateCode</url-pattern>
+  	</servlet-mapping>
+  	
+  	<!-- 延迟加载  主要在hibernate多对一、一对多、多对多时用到 -->
+  	<filter>
+    	<filter-name>OpenSessionInViewFilter</filter-name>
+    	<filter-class>org.springframework.orm.hibernate3.support.OpenSessionInViewFilter</filter-class>
+    	<async-supported>true</async-supported>
+    	<init-param>
+      		<param-name>sessionFactoryBeanName</param-name>
+      		<param-value>sessionFactory</param-value>
+    	</init-param>
+    	<init-param>
+      		<param-name>singleSession</param-name>
+      		<param-value>true</param-value>
+    	</init-param>
+    	<init-param>
+      		<param-name>flushMode</param-name>
+      		<param-value>AUTO</param-value>
+    	</init-param>
+  	</filter>
+  	<filter-mapping>
+    	<filter-name>OpenSessionInViewFilter</filter-name>
+    	<url-pattern>/*Action</url-pattern>
+  	</filter-mapping>
+  	
+  	<session-config>
+    	<session-timeout>30</session-timeout>
+  	</session-config>
+  	
+  	<!-- 错误页面 -->
+	<error-page>  
+        <exception-type>java.lang.Throwable</exception-type>  
+        <location>/error.jsp</location>  
+    </error-page>  
+    <error-page>  
+        <error-code>403</error-code>  
+        <location>/error403.jsp</location>  
+    </error-page>  
+    <error-page>  
+        <error-code>404</error-code>  
+        <location>/error404.jsp</location>  
+    </error-page>  
+    <error-page>  
+        <error-code>500</error-code>  
+        <location>/error500.jsp</location>  
+    </error-page>  
+</web-app>

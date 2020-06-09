@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	 <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>心云天地-技术服务</title>
+	<!-- Bootstrap -->
+    <link href="front/css/bootstrap.css" rel="stylesheet">
+    <link href="front/css/base.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+	<nav class="navbar navbar-fixed-top" id="main_menu">
+	</nav>
+
+	<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+		<div class="carousel-inner" role="listbox">
+			<div class="item active">
+				<a href="#"><img src="front/img/banner_service.jpg" alt="..." data-src="front/images/banner_service.jpg"></a>
+				<div class="carousel-caption">
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<ol class="breadcrumb">
+			<li><a href="index.html">首页</a></li>
+			<li class="active"> 技术服务</li>
+		</ol>
+	</div>
+
+
+	<div class="container">
+		<div class="space20"></div>
+		<div class="row">
+			<div class="left-list">
+				<ul class="list-unstyled list-menu" role="list-link">
+					
+				</ul>
+			</div>
+			<div class="right-content">
+				<div class="content-tab" id="solution_content" role="main-tabs">
+					<div class="content-title"></div>
+					<div class="content-main">
+						
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="space20"></div>
+		<div class="space20"></div>
+		<div class="space20"></div>
+	</div>
+
+	<div id="footerInfo"></div>
+
+ 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="front/js/jquery-3.1.0.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="front/js/bootstrap.min.js"></script>
+    <script src="front/js/data.js"></script>
+    <script src="front/js/base.js"></script>
+    <script type="text/javascript">
+    	$(function(){
+    		setMenusActivity(3);//设置菜单激活状态
+
+    		var id = GetQueryString("id");
+    		content = $("div[role=main-tabs] div.content-main");
+    		title = $("div[role=main-tabs] div.content-title");
+			$.each(service,function(i,item){
+    			if(item.id == id){
+    				content.html(item.content);
+    				title.html(item.title);
+    			}
+    			 li = $(document.createElement("li"));
+    			 li.append("<a href='javascript:;' data-id="+item.id+">"+item.title+"</a>");
+    			 $("ul[role=list-link]").append(li);
+    		})
+    		var a = $("ul[role=list-link] a[data-id="+id+"]");
+    		var li = a.parent();
+    		li.addClass("active");
+
+    		$("ul[role=list-link] a").bind('click',function(){
+    			$("ul[role=list-link] li").removeClass("active");
+    			id = $(this).attr("data-id");
+    			$.each(service,function(i,item){
+	    			if(item.id == id){
+	    				content.html(item.content);
+	    				title.html(item.title);
+	    			}
+	    		})
+	    		var a = $("ul[role=list-link] a[data-id="+id+"]");
+	    		var li = a.parent();
+	    		li.addClass("active");
+    		})
+    	})
+    </script>
+</body>
+</html>

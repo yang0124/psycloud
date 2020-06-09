@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	 <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>心云天地-心期刊</title>
+	<!-- Bootstrap -->
+    <link href="front/css/bootstrap.css" rel="stylesheet">
+    <link href="front/css/base.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+	<nav class="navbar navbar-fixed-top" id="main_menu">
+	</nav>
+
+	<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+		<!-- Wrapper for slides -->
+		<div class="carousel-inner" role="listbox">
+			<div class="item active">
+				<a href="#"><img src="front/img/banner_magazine.jpg" alt="..." data-src="front/images/banner_magazine.jpg"></a>
+				<div class="carousel-caption">
+				</div>
+			</div>
+		</div>
+
+	</div>
+	
+	<div class="container">
+		<ol class="breadcrumb">
+			<li><a href="index.html">首页</a></li>
+			<li class="active"> 心期刊</li>
+		</ol>
+	</div>
+
+	<div class="container">
+		<div class="space20"></div>
+		<div class="row">
+			<div class="col-xs-7" style="min-height: 500px;">
+				<ul class="list-unstyled list-issue">
+					
+				</ul>
+				<div class="space"></div>
+				<div class="text-center">
+					<nav aria-label="Page navigation" id="pagination">
+					</nav>
+				</div>
+			</div>
+			<div class="col-xs-5">
+				<div class="issue-img">
+					<img src="front/img/issue.jpg" class="img-responsive" id="issue_img" data-src="front/images/issue.jpg">
+					<a href="javascript:;" class="show-next" onclick="showNextPage();" ><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"> </span></a>
+				</div>
+			</div>
+		</div>
+	</div>
+    <div class="space"></div>
+    <div class="carousel slide">
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <img src="front/img/banner_issues1.jpg" alt="..." data-src="front/images/banner_issues1.jpg">
+                <div class="container">
+                    <div class="text-center book-container">
+                        <div>
+                            <h1>心云天地 『心期刊』</h1>
+                            <p></p>
+                            <div class="clearfix"><h4>掌握国内领先的心理学解决方案</h4></div>
+                        </div>
+                        <form class="form-book form-inline">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-envelope" aria-hidden="true"> </span></span>
+                                    <input type="text" class="form-control" id="bookmail" aria-describedby="" placeholder="请输入订阅邮箱">
+                                </div>
+                                <button class="btn-book" onclick="submitBook();">订阅</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+	<div id="footerInfo"></div>
+
+ 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="front/js/jquery-3.1.0.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="front/js/bootstrap.min.js"></script>
+    <script src="front/js/data.js"></script>
+    <script src="front/js/base.js"></script>
+    <script type="text/javascript">
+		var size = 10;
+    	$(function(){
+    		setMenusActivity(6);//设置菜单激活状态
+
+    		pagination(1,size,$("#pagination"));
+			addPageContent(1,size,$("ul.list-issue"));
+			addPageClick();
+    	})
+
+    	function addPageClick(){
+    		$("ul.pagination a").bind('click', function(e) {
+    			if($(this).parent().hasClass("disabled")||$(this).parent().hasClass("active"))
+    				return;
+    			/* Act on the event */
+    			var _p = $(this).attr("data-page");
+    			var page_now = $("#pagination li.active a").attr("data-page");
+    			if(_p =='-1'){
+    				page_now--;
+    			}else if(_p=='+1'){
+    				page_now++;
+    			}else{
+    				page_now = _p;
+    			}
+    			$("#pagination li").removeClass("active");
+    			var ls = $("#pagination li a");
+    			$.each(ls,function(i,item){
+    				if($(item).attr("data-page")==page_now){
+    					$(item).parent().addClass('active');
+    				}
+    			})
+    			pages = Math.ceil(issues.length/size);
+    			if(page_now == 1&&pages==1){
+    				$("#pagination li:last").addClass("disabled");
+    				$("#pagination li").eq(0).addClass("disabled");
+    			}else if(pages>1 && page_now == pages){
+    				$("#pagination li").eq(0).removeClass("disabled");
+    				$("#pagination li:last").addClass("disabled");
+    			}else if(page_now > 1 && page_now < pages){
+    				$("#pagination li").eq(0).removeClass("disabled");
+    				$("#pagination li:last").removeClass("disabled");
+    			}
+    			addPageContent(page_now,size,$("ul.list-issue"));
+    		});
+    	}
+
+    	
+
+    	var click = 1;
+    	function showNextPage(){
+    		var height = $(".issue-img").height()-20;
+    		var full = $("#issue_img").height();
+    		if(click*height>=(full-height)){
+                $("#issue_img").animate({top: -(full-height)+'px'}, 500);
+    			$("#issue_img").removeAttr("style");
+    			click = 0;
+    		}else{
+    			var _top = "-"+click*height+"px"
+    			$("#issue_img").animate({top:_top}, 500);
+    			click ++;
+    		}
+
+    	}
+        function submitBook(){
+            var mail = $("#bookmail").val();
+            alert("订阅成功！");
+            /*$.ajax({
+                type: 'POST',
+                url: "index.html",
+                data: "mail="+mail,
+                success: function(result){
+                    alert("订阅成功！");
+                }
+            });*/
+        }
+    </script>
+</body>
+</html>

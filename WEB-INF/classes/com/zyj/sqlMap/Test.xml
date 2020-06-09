@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="Test">
+
+	<select id="queryScaleListByUserId" parameterType="java.util.HashMap"
+		resultType="java.util.HashMap">
+		select
+			a.id as id,
+			a.code as code,
+			a.title_cn as title_cn,
+			a.title_en as title_en,
+			b.title as scale_type_title
+		from scale_info a left join scale_type b on
+		a.type=b.id where a.user_id = #{user_id} || a.user_id = -1
+	</select>
+
+	<select id="queryQuestionByScaleId" parameterType="java.util.HashMap"
+		resultType="java.util.HashMap">
+		select 
+			a.id as id, a.question_id as question_id, a.question_code as question_code, a.scale_id as scale_id, a.user_id as user_id,
+			a.question_type as question_type, a.has_image as has_image, a.question_content as question_content
+		from 
+			question_info a 
+		left join 
+			scale_info b on a.scale_id=b.id 
+		where 
+			a.scale_id = ${scale_id}
+	</select>
+
+	<select id="queryOptionByQuestionId" parameterType="java.util.HashMap"
+		resultType="java.util.HashMap">
+		select 
+			*
+		from 
+			option_info a 
+		where
+			a.scale_id = #{scale_id} and a.question_id = #{question_id}
+	</select>
+
+	<select id="queryScaleById" parameterType="java.util.HashMap"
+		resultType="java.util.HashMap">
+		select
+			*
+		from
+			scale_info a 
+		where
+			a.id = ${scale_id}
+	</select>
+
+	<insert id="insertTestByUserId" parameterType="java.util.HashMap">
+		<selectKey keyProperty="test_id" resultType="java.lang.Integer">
+			SELECT
+			LAST_INSERT_ID()
+		</selectKey>
+		insert into
+		test_record (user_id,batch_id,scale_id, record_type, input_user_id,start_time)
+		values
+		(#{user_id},#{batch_id},#{scale_id},#{record_type}, #{input_user_id},sysdate())
+	</insert>
+
+	<update id="updateTestRecordById" parameterType="java.util.HashMap">
+		update
+		test_record
+		set end_time = sysdate()
+		where id = #{test_id}
+	</update>
+
+	<insert id="insertAnswer" parameterType="java.util.List">
+		insert into answer_info (user_id, test_id , scale_id ,question_id,
+		option_id, create_time)
+		values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			(#{item.user_id},#{item.test_id},#{item.scale_id},
+			#{item.question_id},#{item.option_id},sysdate())
+		</foreach>
+	</insert>
+
+	<select id="queryAnswerValueByTestId" parameterType="java.util.HashMap"
+		resultType="java.util.HashMap">
+		SELECT
+			*
+		FROM
+			answer_info a 
+		LEFT JOIN
+			option_info b ON a.option_id=b.id 
+		WHERE
+			a.test_id = ${test_id}
+	</select>
+
+	<insert id="insertFactorScore" parameterType="java.util.HashMap">
+		insert into
+		factor_record
+		(user_id,scale_id,test_id,factor_id,factor_score,create_time)
+		values
+		(#{user_id},#{scale_id},#{test_id},#{factor_id},#{factor_score},sysdate())
+	</insert>
+	
+	<select id="queryMyTestRecord" parameterType="java.util.HashMap"
+		resultType="java.util.HashMap">
+		SELECT *
+		FROM test_record a LEFT JOIN scale_info b ON a.scale_id=b.id 
+		WHERE (a.user_id = #{user_id} OR a.user_id = -1) AND a.end_time != 'null'
+		ORDER BY a.start_time DESC
+	</select>
+	
+	<select id="queryFactorRecordByTestId" parameterType="java.util.HashMap"
+		resultType="java.util.HashMap">
+		SELECT
+			a.factor_id as factor_id,
+			b.factor_title as factor_title,
+			b.factor_code as factor_code,
+			c.level_id as level_id,
+			a.factor_score as factor_score,
+			c.result_explain as result_explain,
+			c.result_advise as result_advise
+		FROM
+			factor_record a 
+		LEFT JOIN
+			factor_info b ON a.factor_id=b.id
+		LEFT JOIN
+			factor_level_info c ON a.factor_id=c.factor_id
+		WHERE
+			c.group_id = #{group_id} AND a.test_id = #{test_id} AND ((c.level_id = 1 AND a.factor_score >= c.level_range_min) OR (c.level_id != 0 AND a.factor_score > c.level_range_min)) AND a.factor_score &lt;= c.level_range_max
+	</select>
+	
+	<select id="queryFactorScoreByTestId" parameterType="java.util.HashMap"
+		resultType="java.util.HashMap">
+		SELECT
+			a.factor_id as factor_id,
+			b.factor_title as factor_title,
+			b.factor_code as factor_code,
+			a.factor_score as factor_score
+		FROM
+			factor_record a 
+		LEFT JOIN
+			factor_info b ON a.factor_id=b.id
+		WHERE
+			a.test_id = #{test_id}
+	</select>
+	
+	<select id="queryFactorByScaleId" parameterType="java.util.HashMap"
+		resultType="java.util.HashMap">
+		select *
+		from factor_info a
+		where
+		a.scale_id = ${scale_id}
+	</select>
+	
+	<select id="queryAnswerByTestId" parameterType="java.util.HashMap"
+		resultType="java.util.HashMap">
+		SELECT 
+			c.question_code AS question_code, b.option_content AS option_content, b.option_value AS option_value
+		FROM 
+			answer_info a 
+		LEFT JOIN
+			option_info b ON a.option_id=b.id
+		LEFT JOIN
+			question_info c ON a.question_id = c.id
+		WHERE a.test_id = ${test_id}
+	</select>
+	
+	<select id="queryMyTestScaleList" parameterType="java.util.HashMap"
+		resultType="java.util.HashMap">
+		SELECT 
+			a.batch_id as batch_id,b.title as batch_title,c.scale_id as scale_id,d.code as code,d.title_cn as title_cn, c.test_interval as test_interval, b.avalid_time_start as avalid_time_start,b.avalid_time_end as avalid_time_end
+		FROM 
+			test_batch_user a 
+		LEFT JOIN
+			test_batch b ON a.batch_id=b.id
+		LEFT JOIN
+			test_batch_scale c ON a.batch_id = c.batch_id
+		LEFT JOIN
+			scale_info d ON c.scale_id = d.id
+		WHERE
+			a.user_id = #{user_id} AND b.avalid_time_start &lt;= sysdate() AND b.avalid_time_end &gt;= sysdate()
+	</select>
+	
+	<select id="queryTestGroupByScaleId" parameterType="java.util.HashMap"
+		resultType="java.util.HashMap">
+		SELECT 
+			*
+		FROM 
+			test_group_info a
+		WHERE
+			a.scale_id = #{scale_id}
+	</select>
+
+	<select id="queryFactorLevel" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			a.level_id
+		FROM
+			factor_level_info a
+		WHERE
+			a.factor_id = #{factor_id} AND a.group_id = #{group_id} AND ((a.level_id = 1 AND #{factor_score} >= a.level_range_min) OR (a.level_id != 0 AND #{factor_score} > a.level_range_min)) AND #{factor_score} &lt;= a.level_range_max
+	</select>
+</mapper>

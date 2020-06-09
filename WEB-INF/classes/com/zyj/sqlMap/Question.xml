@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="Question">
+	<select id="queryQuestionByScaleId" parameterType="java.util.HashMap"
+		resultType="java.util.HashMap">
+		select *
+		from question_info a where (a.user_id = #{user_id} || a.user_id = -1)
+		and a.scale_id = #{scale_id}
+		order by a.id
+	</select>
+
+	<select id="queryQuestionById" parameterType="java.util.HashMap"
+		resultType="java.util.HashMap">
+		select *
+		from question_info a where (a.user_id = #{user_id} || a.user_id = -1)
+		and a.scale_id = #{scale_id} and a.id = #{question_id}
+	</select>
+
+	<select id="queryQuestionByCode" parameterType="java.util.HashMap"
+		resultType="java.util.HashMap">
+		select *
+		from question_info a where (a.user_id = #{user_id} || a.user_id = -1)
+		and a.scale_id = #{scale_id} and a.question_code = #{question_code}
+		order by a.id
+	</select>
+
+	<select id="queryOptionByQuestionId" parameterType="java.util.HashMap"
+		resultType="java.util.HashMap">
+		select *
+		from option_info a where (a.user_id = #{user_id} || a.user_id = -1) and
+		a.scale_id = #{scale_id} and a.question_id = #{question_id}
+		order by a.id
+	</select>
+
+	<insert id="insertQuestion" parameterType="java.util.HashMap">
+		insert into
+		question_info (user_id, question_id, question_code, scale_id,
+		question_type, has_image,question_content, create_time)
+		values
+		(#{user_id},
+		#{question_id},#{question_code},#{scale_id},#{question_type},#{has_image},#{question_content},sysdate())
+	</insert>
+
+	<update id="updateQuestionById" parameterType="java.util.HashMap">
+		update question_info
+		<set>
+			<if test="question_id != null">
+				question_id = #{question_id},
+			</if>
+			<if test="question_code != null">
+				question_code = #{question_code},
+			</if>
+			<if test="scale_id != null">
+				scale_id = #{scale_id},
+			</if>
+			<if test="type != null">
+				type = #{type},
+			</if>
+			<if test="question_type != null">
+				question_type = #{question_type},
+			</if>
+			<if test="has_image != null">
+				has_image = #{has_image},
+			</if>
+			<if test="question_content != null">
+				question_content = #{question_content},
+			</if>
+		</set>
+		where id = #{id}
+	</update>
+
+	<insert id="insertOption" parameterType="java.util.HashMap">
+		insert into option_info
+		(user_id, question_id, scale_id,
+		option_code,option_content,option_value,option_jump_question_id,
+		create_time)
+		values
+		(#{user_id},#{question_id},#{scale_id},#{option_code},#{option_content},#{option_value},#{option_jump_question_id},sysdate())
+	</insert>
+
+	<insert id="insertQuestionByImport" parameterType="java.util.List">
+		insert into question_info (user_id, question_id, question_code,
+		scale_id, question_type, has_image,question_content, create_time)
+		values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			(#{item.user_id},
+			#{item.question_id},#{item.question_code},#{item.scale_id},#{item.question_type},#{item.has_image},#{item.question_content},sysdate())
+		</foreach>
+	</insert>
+
+	<insert id="insertOptionByImport" parameterType="java.util.List">
+		insert into option_info
+		(user_id, question_id, scale_id,
+		option_code,option_content,option_value,option_jump_question_id,
+		create_time)
+		values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			(#{item.user_id},#{item.question_id},#{item.scale_id},#{item.option_code},#{item.option_content},#{item.option_value},#{item.option_jump_question_id},sysdate())
+		</foreach>
+	</insert>
+
+	<update id="updateOption" parameterType="java.util.HashMap">
+		update option_info
+		<set>
+			<if test="option_code != null">
+				option_code = #{option_code},
+			</if>
+			<if test="option_value != null">
+				option_value = #{option_value},
+			</if>
+			<if test="option_jump_question_id != null">
+				option_jump_question_id = #{option_jump_question_id},
+			</if>
+			<if test="option_content != null">
+				option_content = #{option_content}
+			</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="deleteOption" parameterType="java.util.HashMap">
+		DELETE FROM
+			option_info
+		WHERE
+			id = #{option_id}
+	</delete>
+</mapper>

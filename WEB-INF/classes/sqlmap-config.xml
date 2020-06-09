@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!-- Always ensure to use the correct XML header as above! -->
+<configuration>
+	
+	<mappers>  
+        <!-- <mapper resource="com/zyj/sqlMap/AdminMenu.xml"/>
+        <mapper resource="com/zyj/sqlMap/Login.xml"/>
+        <mapper resource="com/zyj/sqlMap/AdminRole.xml"/>
+        <mapper resource="com/zyj/sqlMap/AdminInfo.xml"/>
+
+        <mapper resource="com/zyj/sqlMapApi/ApiUser.xml"/>
+        <mapper resource="com/zyj/sqlMapApi/ApiPurchase.xml"/> -->
+        <mapper resource="com/zyj/sqlMap/User.xml"/>
+        <mapper resource="com/zyj/sqlMap/Scale.xml"/>
+        <mapper resource="com/zyj/sqlMap/Question.xml"/>
+    </mappers>
+</configuration>

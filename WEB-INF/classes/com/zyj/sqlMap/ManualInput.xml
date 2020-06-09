@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="ManualInput">
+
+	<select id="queryManualInputList" parameterType="java.util.HashMap"
+		resultType="java.util.HashMap">
+		SELECT
+			a.id, 
+			c.title as batch_title, 
+			b.title_cn as scale_title_cn, 
+			b.title_en as scale_title_en, 
+			d.name as user_name, 
+			a.start_time as test_start_time,
+			a.input_date as input_date
+		FROM
+			test_record a
+		LEFT JOIN
+			scale_info b ON a.scale_id = b.id
+		LEFT JOIN
+			test_batch c ON a.batch_id = c.id
+		LEFT JOIN
+			user_info d ON a.user_id = c.id
+		WHERE
+			a.input_user_id = #{user_id} AND a.record_type = 1
+		ORDER BY
+			a.input_date DESC
+	</select>
+	
+	<insert id="insertScaleAlert" parameterType="java.util.HashMap">
+		<selectKey resultType="java.lang.Integer" keyProperty="id">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+		INSERT INTO
+		scale_alert_info
+		(title,scale_id,alert_type,create_user_id,create_time)
+		VALUES
+		(#{title},#{scale_id},#{alert_type},#{create_user_id},sysdate())
+	</insert>
+	
+</mapper>

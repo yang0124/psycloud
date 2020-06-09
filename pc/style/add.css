@@ -1,0 +1,331 @@
+body, html{
+	background:#fff;
+}
+
+i {
+	vertical-align:middle;
+}
+
+#form {
+/* 	overflow:auto; */
+overflow: visible;
+}
+#form .new_line {
+	display:block;
+	background:#f1f1f1;
+	margin-bottom: 60px;
+}
+
+#form .new_line h2 {
+	background:#f1f1f1;	
+	height:40px;
+	font-size:16px;
+	line-height:40px;
+	text-indent:30px;
+}
+
+#form .new_line .column {
+	display:inline-block;
+	padding: 10px;
+}
+
+
+#form .new_line .column b.title {
+	font-size:15px;
+	width:120px;
+	display:inline-block;
+	text-align:right;
+}
+
+#form .new_line .column.wd30 {
+	width:30%;
+}
+#form .new_line .column.wd40 {
+	width:40px;
+}
+#form .new_line .column.wd50 {
+	width:50%;
+}
+
+#form .new_line .column1 {
+	margin:10px;
+	width:90%;
+	display:inline-block;
+
+}
+
+#form .new_line .column1 b.title {
+	font-size:15px;
+	width:120px;
+	display:inline-block;
+	text-align:right;
+	vertical-align:top;
+}
+
+#form .new_line .column1 .competance {
+	display:inline-block;
+	width:180px;
+}
+
+#form .new_line .column1 .competance_1 {
+	position:relative;
+	top:-60px;
+	display:inline-block;
+	width:80px;
+	text-align:center;
+}
+.mgT10{
+	margin-top:10px;	
+}
+
+.competance select{
+	border:1px solid #ccc;
+	background:#fff;
+	padding:5px;
+	width:180px;
+	height:200px;
+}
+
+.competance ul li{
+	line-height:22px;
+}
+
+#form #op_bar {
+	text-align:center;
+	position:fixed;
+	bottom:0;
+	height:60px;
+	width:87%;
+	background:#f1f1f1;
+	line-height:70px;
+	z-index: 1000;
+}
+#form #op_bar .btn {
+	border-radius:6px;
+	padding:5px 80px;
+	font-size:20px;
+	margin-left:10px;
+	margin-bottom:10px;
+}
+
+.au_infor {
+	margin:0 auto;width:60%;margin-top:100px;padding:10px;text-align:center;color:red;font-size:14px;
+}
+
+.w450{ width:450px;}
+.w320{ width:320px;s}
+.flR{ float:right;}
+.flL{ float:left;}
+.w150{ width:150px;}
+.wp100{ width:95%;}
+.wp80{ width:80%;}
+.w80{ width:80px;}
+.mgR10{margin-right: 10px;}
+.mg10{ margin:5px 10px;}
+
+.pdT15{ padding-top:15px;}
+.pdL20{ padding-left:20px;}
+.txtC{text-align: center;}
+.w100{ width:100px;}
+.h35{ height:35px;}
+.lh30{ line-height:30px;}
+.ft14{ font-size:14px;}
+
+	body{font-family: "微软雅黑"}
+    .divLayer{
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%; 
+        z-index:10000;  
+        display: none;
+    }
+    .opt7{
+        filter:alpha(opacity=70); 
+        -moz-opacity:0.7;      
+        -khtml-opacity:0.7;     
+        opacity:0.7;       
+    }
+    .mask{
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background: #000;
+    }	
+    .divBox{
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        margin-left: -250px;
+        margin-top: -150px;        
+        width: 370px;
+        height:auto;
+        padding-bottom: 30px;
+        overflow: hidden;
+        background: #fff;
+        z-index: 100;
+        display: none;
+    }
+    .divBox1{
+    	text-align:center;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        margin-left: -100px;
+        margin-top: -150px;        
+        width: 400px;
+        height:200px;
+        overflow: hidden;
+        background: #fff;
+        z-index: 100;
+    }
+    .divBox2{
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        margin-left: -250px;
+        margin-top: -150px;        
+        width: 370px;
+        height:auto;
+        padding-bottom: 30px;
+        overflow: hidden;
+        background: #fff;
+        z-index: 100;
+    }
+    .Box_tit{
+        width: 100%;
+        height: 45px;
+        line-height: 45px;
+        color: #fff;
+        background: #2E3643;
+        font-size: 18px;
+		
+    }
+    .Box_tit1{
+        width: 100%;
+        height: 45px;
+        line-height: 45px;
+        color: #fff;
+        background: #2E3643;
+        font-size: 18px;
+        padding-left: 10px;
+
+    }
+    .BoxCont{
+        float: left;
+        width: 330px;
+        padding: 20px 0px 0px 40px;
+
+    }
+    .BoxCont1{
+        width: 100%;
+    }
+    .BoxCont > div{
+        float: left;
+        width: 100%;
+    }
+    .BoxDate{
+        margin-top: 20px;
+    }
+    .BoxDate2{
+        font:20px "微软雅黑" ;
+        margin-left: 40px;
+        margin-top: 40px;
+    }
+    .dateInput{
+        width: 160px;
+        height: 35px;
+        line-height: 35px;
+        border:1px solid #D1D1D1;
+        padding:0px 10px 0px 10px;
+    }
+    .codeInput{
+        float:left;
+        width: 195px;
+        height: 33px;
+        line-height: 33px;
+        border:1px solid #D1D1D1;
+        padding:0px 10px 0px 10px;
+    }
+    .BtnTwo{
+        margin-top: 60px;
+    }
+    .saveBtn{
+        float: left;
+        width: 110px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        color: #fff;
+        background: #2E3643;
+        border-radius: 5px;
+        margin-left: 90px;
+        cursor: pointer;
+    }  
+    .backBtn{
+        float: left;
+        width: 110px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        border-radius: 5px;
+        border: 1px solid #D1D1D1;
+        margin-left: 20px;
+        cursor: pointer;
+    }  
+    .clickPlay{
+        float: left;
+        width: 40px;
+        height: 30px;
+        line-height: 20px;
+        text-align: center;
+        color: #fff;
+        background: #2E3643;
+        border-radius: 5px;
+        margin-left: 20px;
+        cursor: pointer;
+    }  
+    .show{display: block;}
+    .hide{display: none;} 
+    .addCode{
+        float: left;
+        width: 60px;
+        height: 35px;
+        line-height: 35px;
+        text-align: center;
+        background: #2E3643;
+        color:#fff;
+        margin-left: 10px;
+        cursor: pointer;
+    }  
+    .delCode{
+        float: left;
+        width: 25px;
+        height: 25px;
+        line-height: 20px;
+        text-align: center;
+        background: #fff;
+        border-radius: 100%;
+        font-size:25px;
+        cursor: pointer;
+        color: #000;
+        margin: 10px 0px 0px 10px;
+    } 
+    .closed_C{
+        float: right;
+        color: #fff;
+        font-size: 24px;
+        margin: 0px 10px 0px 0px;
+        cursor: pointer;
+    }
+    .ListItem{
+        float: left;
+        width: 330px;
+        height: 35px;
+        line-height: 35px;
+    }   
+    .listInput{
+        float: left;
+        margin: 10px 15px 0px 0px;
+    }

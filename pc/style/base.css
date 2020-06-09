@@ -1,0 +1,19 @@
+.base_text.w900 {
+	width:900px;
+}
+.base_text.w100 {
+	width:100px;
+}
+.base_text.w100 {
+	width:100px;
+}
+.base_text.h100 {
+	height:100px;
+}
+.base_text.w550 {
+	width:550px;
+}
+.base_text.w670 {
+	width:670px;
+}
+.file_btn{width:79px; height:32px;line-height:22px; border:none; cursor:pointer; overflow:visible; background:url(../images/file_btn.png) no-repeat;}

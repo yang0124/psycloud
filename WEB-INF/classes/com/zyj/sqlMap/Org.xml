@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="Org">
+	<select id="queryOrgTeam" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			a.id ,a.team_title
+		FROM
+			user_team_info a
+		LEFT JOIN
+			user_permissions b ON a.area_id = b.area_id AND a.org_id = b.org_id AND (b.sub_org_id = 0 OR a.sub_org_id = b.sub_org_id)
+		WHERE
+			b.user_id = #{user_id}
+	</select>
+
+	<insert id="insertOrgTeam" parameterType="java.util.HashMap">
+		<selectKey resultType="java.lang.Integer" keyProperty="id">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+		INSERT INTO user_team_info
+			(team_title,create_user_id,area_id,org_id, sub_org_id,team_status, create_time)
+		VALUES
+			(#{team_title}, #{create_user_id}, #{area_id}, #{org_id},#{sub_org_id}, 1, sysdate())
+	</insert>
+	
+	<select id="queryOrgSubTeam" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			a.id, a.sub_team_title, c.team_title
+		FROM
+			user_sub_team_info a
+		LEFT JOIN
+			user_team_info c ON a.team_id = c.id
+		LEFT JOIN
+			user_permissions b ON a.area_id = b.area_id AND a.org_id = b.org_id AND (b.sub_org_id = 0 OR a.sub_org_id = b.sub_org_id)
+		WHERE
+			b.user_id = #{user_id}
+	</select>
+
+	<insert id="insertOrgSubTeam" parameterType="java.util.HashMap">
+		<selectKey resultType="java.lang.Integer" keyProperty="id">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+		INSERT INTO user_sub_team_info
+			(sub_team_title,create_user_id,area_id,org_id, sub_org_id, team_id,sub_team_status, create_time)
+		VALUES
+			(#{sub_team_title}, #{create_user_id}, #{area_id}, #{org_id},#{sub_org_id},#{team_id}, 1, sysdate())
+	</insert>
+	
+	<delete id="deleteOrgSubTeam" parameterType="java.util.HashMap">
+		DELETE FROM
+			user_sub_team_info
+		WHERE
+			id = #{sub_team_id}
+	</delete>
+</mapper>

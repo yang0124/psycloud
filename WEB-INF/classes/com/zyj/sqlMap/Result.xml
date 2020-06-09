@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="Result">
+
+	<select id="queryBatchFinishedUserCount" parameterType="java.util.HashMap" resultType="int">
+		SELECT
+			COUNT(DISTINCT a.scale_id)
+		FROM
+			test_record a
+		WHERE
+			a.batch_id = #{batch_id} AND a.end_time != 'null'
+	</select>
+	
+	<select id="queryBatchUserGenderInfo" parameterType="java.util.HashMap" resultType="int">
+		SELECT
+			COUNT(DISTINCT a.user_id)
+		FROM
+			test_record a
+		LEFT JOIN
+			user_info b ON a.user_id = b.id
+		WHERE
+			a.batch_id = #{batch_id} AND b.gender = #{gender}
+	</select>
+	
+	<select id="queryBatchTestScaleUserList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			a.user_id as user_id, c.name as name,a.start_time,
+			d.org_info as org_title, e.sub_org_title as sub_org_title, f.team_title as team_title, g.sub_team_title as sub_team_title, 
+			h.alert_id as alert_id,a.id as test_id, a.scale_id as scale_id,
+			c.age as user_age, c.occupation as user_occupation, c.education as user_education,c.gender as user_gender
+		FROM
+			test_record a
+		LEFT JOIN
+			test_batch_user b ON a.batch_id = b.batch_id AND a.user_id = b.user_id
+		LEFT JOIN
+			user_info c ON a.user_id = c.id
+		LEFT JOIN
+			user_org_info d ON c.org_id = d.id
+		LEFT JOIN
+			user_sub_org e ON c.sub_org_id = e.id
+		LEFT JOIN
+			user_team_info f ON c.team_id = f.id
+		LEFT JOIN
+			user_sub_team_info g ON c.sub_team_id = g.id
+		LEFT JOIN
+			test_batch_scale h ON h.batch_id = a.batch_id and h.scale_id = a.scale_id
+		WHERE
+			a.batch_id = #{batch_id} AND a.scale_id = #{scale_id} AND a.end_time != 'null'
+	</select>
+
+	<select id="queryBatchScaleFinishedCount" parameterType="java.util.HashMap" resultType="int">
+		SELECT
+			COUNT(DISTINCT a.user_id)
+		FROM
+			test_record a
+		WHERE
+			a.batch_id = #{batch_id} AND a.scale_id = #{scale_id} AND a.end_time != 'null'
+	</select>
+
+	<select id="queryBatchScaleFactorScoreAverage" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			b.batch_id as batch_id,
+			c.id as factor_id,
+			c.factor_code as factor_code,
+			c.factor_title as factor_title,
+			AVG(a.factor_score) as factor_score
+		FROM
+			factor_record a
+		LEFT JOIN
+			test_record b ON a.test_id = b.id
+		LEFT JOIN
+			factor_info c ON a.factor_id = c.id
+		WHERE
+			b.batch_id = ${batch_id} AND a.scale_id = ${scale_id} AND a.factor_id = ${factor_id}
+	</select>
+
+	<select id="queryBatchUserScaleList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			a.batch_id as batch_id,
+			a.scale_id as scale_id,
+			b.title_cn as scale_title_cn,
+			b.title_en as scale_title_en
+		FROM
+			test_batch_scale a
+		LEFT JOIN
+			scale_info b ON a.scale_id = b.id
+		LEFT JOIN
+			test_batch_user c ON a.batch_id = c.batch_id
+		WHERE
+			c.user_id = #{user_id} AND a.batch_id = #{batch_id}
+	</select>
+	<select id="queryBatchUserScaleInfo" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			a.start_time
+		FROM
+			test_record a
+		LEFT JOIN
+			test_batch b ON a.batch_id = b.id
+		WHERE
+			a.batch_id = #{batch_id} AND a.scale_id = #{scale_id} AND a.user_id = #{user_id} AND a.start_time != 'null' AND a.end_time != 'null' AND a.start_time &gt;= b.avalid_time_start AND a.start_time &lt;= b.avalid_time_end
+	</select>
+
+	<select id="queryBatchUserBaseInfo" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			*
+		FROM
+	</select>
+</mapper>

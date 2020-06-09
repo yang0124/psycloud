@@ -1,0 +1,61 @@
+body, html {
+	background:#F9F9F9 ;
+}
+#nav_link {
+	border-bottom:2px solid #f1f1f1;
+}
+
+#nav_link a {
+	font-size:15px;
+	line-height:50px;
+	margin:10px;
+}
+
+
+.tab_host {
+	display:block;
+	width:100%;
+}
+
+.tab_host .tabs a {
+	font-size:14px;
+	display:inline-block;
+	padding:10px 30px;
+	color:#fff;
+	background:#2E3643;
+	margin-left:10px;
+	margin-top:10px;
+}
+.tab_host .tabs1 a {
+	font-size:14px;
+	display:inline-block;
+	padding:10px 30px;
+	color:#2E3643;
+	background:#ffffff;
+	margin-left:10px;
+	margin-top:10px;
+}
+.tab_host .tabs a.first {
+	border-radius:6px 0 0 0px ;
+}
+.tab_host .tabs a.last {
+	border-radius:6px 6px 0px 0px ;
+}
+.tab_host .tabs a.on {
+	color: #faddde;
+	background: #d81b21;
+	background: -webkit-gradient(linear, left top, left bottom, from(#ed1c24), to(#aa1317));
+	background: -moz-linear-gradient(top,  #ed1c24,  #aa1317);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ed1c24', endColorstr='#aa1317');
+}
+
+.tab_host #fragments {
+	border:1px solid #000;
+	margin-left:-4px;
+	padding:10px;
+}
+
+.tab_host #fragments .fragment {
+	display:block;
+
+}

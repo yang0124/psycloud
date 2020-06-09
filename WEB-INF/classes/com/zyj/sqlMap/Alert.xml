@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="Alert">
+
+	<select id="queryScaleAlertList" parameterType="java.util.HashMap"
+		resultType="java.util.HashMap">
+		SELECT
+			a.id as id,a.code as code, a.title as title ,b.title_cn as scale_title
+		FROM
+			scale_alert_info a
+		LEFT JOIN
+			scale_info b ON a.scale_id = b.id
+		WHERE
+			a.create_user_id = #{user_id}
+	</select>
+	
+	<insert id="insertScaleAlert" parameterType="java.util.HashMap">
+		<selectKey resultType="java.lang.Integer" keyProperty="id">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+		INSERT INTO
+		scale_alert_info
+		(title,code,scale_id,alert_type,create_user_id,create_time)
+		VALUES
+		(#{title},#{code},#{scale_id},#{alert_type},#{create_user_id},sysdate())
+	</insert>
+	
+	<select id="queryScaleAlertById" parameterType="java.util.HashMap"
+		resultType="java.util.HashMap">
+		SELECT
+			*
+		FROM
+			scale_alert_info a
+		WHERE
+			a.id = #{id}
+	</select>
+	
+	<insert id="insertScaleAlertLevel" parameterType="java.util.HashMap">
+		INSERT INTO
+		scale_alert_level_info
+		(alert_id,code,title,alert_level_formula,alert_level_color)
+		VALUES
+		(#{alert_id},#{code},#{title},#{alert_level_formula},#{alert_level_color})
+	</insert>
+	
+	<select id="queryScaleAlertLevelList" parameterType="java.util.HashMap"
+		resultType="java.util.HashMap">
+		SELECT
+			*
+		FROM
+			scale_alert_level_info a
+		WHERE
+			a.alert_id = #{id}
+	</select>
+
+	<select id="queryBatchAlertInfo" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			b.code as code, b.alert_level_formula as formula, b.title as title, b.alert_level_color as color
+		FROM
+			scale_alert_info a
+		LEFT JOIN
+			scale_alert_level_info b ON a.id = b.alert_id
+		WHERE
+			a.id = #{alert_id} AND a.scale_id = #{scale_id}
+	</select>
+
+	<select id="queryScaleAlertByScaleId" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			a.id,
+			a.title
+		FROM
+			scale_alert_info a
+		WHERE
+			a.scale_id = #{scale_id}
+	</select>
+</mapper>

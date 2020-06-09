@@ -1,0 +1,436 @@
+.border {
+	border: 1px solid #dfdfdf
+}
+.content {
+	width: 1200px;
+	margin: 0 auto
+}
+.content .c-head {
+	background-color: #fff;
+	/*border: 1px solid #dfdfdf;*/
+	/*padding: 10px 0 10px 0;*/
+	margin-top: 20px
+}
+/*.content .c-head ul {*/
+	/*width: 100%*/
+/*}*/
+.content .c-head ul li {
+	float: left;
+	margin:0 20px;
+	height: 28px;
+	line-height: 28px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis
+}
+.content .c-head ul li a {
+	padding: 3px 10px
+}
+.content .c-head ul li p {
+	width: 45px;
+	text-align: center;
+	cursor: pointer;
+	background-color: #13a654;
+	color: #fff;
+}
+.content .c-head ul li p.on {
+	background-color: #fff;
+	color: #333
+}
+.content .c-head ul li a.on {
+	background-color: #13a654;
+	color: #fff
+}
+.content .c-head ul li a.not-allow {
+	color: #ccc;
+	cursor: not-allowed;
+}
+.content .c-head-class {
+	background-color: #fff;
+	/*border: 1px solid #dfdfdf;*/
+	/*padding: 10px 0 10px 0;*/
+	margin-top: 20px
+}
+/*.content .c-head ul {*/
+/*width: 100%*/
+/*}*/
+.content .c-head-class ul li {
+	float: left;
+	margin:0 20px;
+	height: 28px;
+	line-height: 28px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis
+}
+.content .c-head-class ul li a {
+	padding: 3px 10px
+}
+.content .c-head-class ul li p {
+	width: 45px;
+	text-align: center;
+	cursor: pointer;
+	background-color: #13a654;
+	color: #fff;
+}
+.content .c-head-class ul li p.on {
+	background-color: #fff;
+	color: #333
+}
+.content .c-head-class ul li a.on {
+	background-color: #13a654;
+	color: #fff
+}
+.content .c-content {
+	margin-top: 20px
+}
+.content .c-content .c-l {
+	float: left;
+	width: 920px;
+	margin-bottom: 20px
+}
+/*.content .c-content .c-l .c-title {*/
+	/*width: 100%;*/
+	/*border: 1px solid #dfdfdf;*/
+	/*background-color: #f5f5f5*/
+/*}*/
+.content .c-content .c-l .c-title .t-l {
+	/*float: left*/
+    display: inline-block;
+    vertical-align: middle;
+}
+.content .c-content .c-l .c-title .t-l ul {
+	overflow: auto
+}
+.content .c-content .c-l .c-title .t-l ul li {
+	float: left;
+	margin-left:-1px;
+	padding: 0 20px;
+	border-left: 1px solid #f5f5f5;
+	border-right: 1px solid #f5f5f5
+}
+.content .c-content .c-l .c-title .t-l ul li a {
+	display: inline-block;
+	height: 58px;
+	line-height: 58px;
+	padding-right: 20px;
+	/*background: url(../../../sxsfdx/img/teacher/teacher-icon.png) no-repeat 17px -15px*/
+}
+.content .c-content .c-l .c-title .t-l ul .first {
+	border-left: none
+}
+.content .c-content .c-l .c-title .t-l ul .first a {
+	padding-right: 0
+}
+.content .c-content .c-l .c-title .t-l ul li.on {
+	background-color: #fff;
+	border-left: 1px solid #dfdfdf;
+	border-right: 1px solid #dfdfdf
+}
+.content .c-content .c-l .c-title .t-l ul li.on a {
+	color: #499e50;
+	background: url(../../../sxsfdx/img/teacher/teacher-icon.png) no-repeat -103px -15px
+}
+.content .c-content .c-l .c-title .t-l ul .first.on {
+	border-left: none
+}
+.content .c-content .c-l .c-title .t-c {
+	/*float: left;*/
+	/*position: relative;*/
+	/*border: 1px solid #dfdfdf;*/
+	/*height: 30px;*/
+	/*line-height: 30px;*/
+	/*padding-left: 5px;*/
+	/*margin-left: 130px;*/
+	/*background-color: #fff;*/
+    display: inline-block;
+    vertical-align: middle;
+}
+.content .c-content .c-l .c-title .t-c span {
+	display: inline-block;
+	height: 30px;
+	width: 80px;
+	text-align: center;
+}
+.content .c-content .c-l .c-title .t-c ul {
+	display: none;
+	position: absolute;
+	left: 75px;
+	width: 79px;
+	border: 1px solid #dfdfdf;
+	text-align: center;
+	background-color: #fff
+}
+.content .c-content .c-l .c-title .t-c ul li:hover {
+	background-color: #dfdfdf
+}
+.content .c-content .c-l .c-title .t-c ul li:hover a {
+	color: #499e50
+}
+.content .c-content .c-l .c-title .t-c:hover ul {
+	display: block
+}
+.content .c-content .c-l .c-title .t-r {
+	/*float: left;*/
+    display: inline-block;
+    vertical-align: middle;
+	margin-left: 40px;
+	font-size: 0em;
+}
+/*.content .c-content .c-l .c-title .t-r input {*/
+	/*width: 180px;*/
+	/*height: 30px;*/
+	/*line-height: 30px;*/
+	/*border: 1px solid #dfdfdf;*/
+	/*padding-left: 5px;*/
+	/*vertical-align: middle;*/
+/*}*/
+.content .c-content .c-l .c-title .t-r a {
+	display: inline-block;
+	width: 35px;
+	height: 36px;
+	font-size: 18px;
+	line-height: 36px;
+	text-align: center;
+	color: #009688;
+	vertical-align: middle;
+	/*position: relative;*/
+	/*top: 11px;*/
+	/*left: -4px;*/
+	border: 1px solid #e6e6e6;
+	border-left: none;
+	/*background: url(../../../sxsfdx/img/teacher/teacher-icon.png) no-repeat -30px -323px*/
+}
+.content .c-content .c-l .c-title .t-r a:hover {
+	background: url(../../../sxsfdx/img/teacher/teacher-icon.png) no-repeat -145px -696px #fff
+}
+.content .c-content .c-l .c-con {
+	width: 100%;
+	padding: 10px 0;
+	border: 1px solid #dfdfdf;
+	margin-top: 20px;
+	cursor: pointer;
+	background-color: #fff
+}
+.content .c-content .c-l .c-con:hover {
+	border: 1px solid #13a654
+}
+.content .c-content .c-l .c-con:hover h5 {
+	color: #499e50
+}
+.content .c-content .c-l .c-con:hover .img img {
+	transform: scale(1.05);
+	-o-transform: scale(1.05);
+	-moz-transform: scale(1.05)
+}
+.content .c-content .c-l .c-con .img {
+	float: left;
+	margin-left: 10px;
+	margin-top: 3px;
+}
+.content .c-content .c-l .c-con .img img {
+	width: 220px;
+	height: 150px;
+	overflow: hidden;
+	transition: all .5s ease
+}
+.content .c-content .c-l .c-con .c-in {
+	float: left;
+	margin-left: 20px
+}
+.content .c-content .c-l .c-con .c-in h5 {
+	font-size: 16px
+}
+.content .c-content .c-l .c-con .c-in p {
+	margin: 10px 0;
+	width: 670px;
+	height: 97px;
+	overflow: hidden
+}
+.content .c-content .c-l .c-con .c-in a {
+	padding-left: 20px;
+	color: #999
+}
+.content .c-content .c-l .c-con .c-in .people {
+	background: url(../../../sxsfdx/img/teacher/teacher-icon.png) no-repeat -38px -181px
+}
+.content .c-content .c-l .c-con .c-in .time {
+	margin: 0 20px;
+	background: url(../../../sxsfdx/img/teacher/teacher-icon.png) no-repeat -38px -254px
+}
+.content .c-content .c-l .c-con .c-in .hour {
+	background: url(../../../sxsfdx/img/teacher/teacher-icon.png) no-repeat -36px -549px
+}
+.content .c-content .c-l .page {
+	margin: 20px auto;
+	text-align: center
+}
+.content .c-content .c-l .page a {
+	display: inline-block;
+	width: 28px;
+	text-align: center;
+	height: 26px;
+	line-height: 26px;
+	margin-left: 5px;
+	border: 1px solid #dfdfdf
+}
+.content .c-content .c-l .page p {
+	display: inline
+}
+.content .c-content .c-l .page a.on {
+	border: 1px solid #499e50;
+	color: #499e50
+}
+.content .c-content .c-l .page a.notAllow {
+	cursor: not-allowed;
+	color: #dfdfdf
+}
+.content .c-content .c-r {
+	float: left;
+	margin-left: 30px;
+	margin-bottom: 20px;
+	width: 250px
+}
+.content .c-content .c-r .h-title {
+	width: 100%;
+	border-bottom: 1px solid #dfdfdf;
+	padding-bottom: 5px
+}
+.content .c-content .c-r .h-title div {
+	float: left;
+	width: 3px;
+	height: 22px;
+	background-color: #499e50
+}
+.content .c-content .c-r .h-title p {
+	float: left;
+	padding-left: 25px;
+	font-size: 16px;
+	line-height: 22px
+}
+.content .c-content .c-r .h-title a {
+	float: right;
+	padding-right: 20px;
+	background: url(../../../sxsfdx/img/teacher/teacher-icon.png) no-repeat -11px -108px
+}
+.content .c-content .c-r .h-title a:hover {
+	color: #499e50;
+	background: url(../../../sxsfdx/img/teacher/teacher-icon.png) no-repeat -131px -108px
+}
+.content .c-content .c-r .ranking {
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	left: 0;
+	top: 0
+}
+.content .c-content .c-r .r-1 {
+	background: url(../../../sxsfdx/img/teacher/teacher-icon.png) no-repeat -36px -620px
+}
+.content .c-content .c-r .r-2 {
+	background: url(../../../sxsfdx/img/teacher/teacher-icon.png) no-repeat -36px -694px
+}
+.content .c-content .c-r .r-3 {
+	background: url(../../../sxsfdx/img/teacher/teacher-icon.png) no-repeat -36px -767px
+}
+.content .c-content .c-r .hot {
+	border: 1px solid #dfdfdf;
+	padding: 10px;
+	background-color: #fff
+}
+.content .c-content .c-r .hot .n-1 {
+	position: relative;
+	border: 1px solid #dfdfdf;
+	margin-top: 20px;
+	padding-bottom: 10px
+}
+.content .c-content .c-r .hot .n-1 p {
+	width: 100%
+}
+.content .c-content .c-r .hot .n-1 p span {
+	display:block;
+	width: 100%;
+	height: 20px;
+	padding-left:10px;
+	line-height:20px;
+	overflow: hidden;
+	margin-left: 2px;
+}
+.content .c-content .c-r .hot .n-1 p a {
+	font-size: 14px;
+	line-height: 19px;
+	margin-right: 2px;
+	padding-left: 15px;
+	color: #bbb;
+	margin-left: 10px;
+}
+.content .c-content .c-r .hot .n-1 p a.mintues {
+	background: url(../../../sxsfdx/img/teacher/teacher-icon.png) no-repeat -40px -549px;
+}
+.content .c-content .c-r .hot .n-1 p a.people {
+	background: url(../../../sxsfdx/img/teacher/teacher-icon.png) no-repeat -39px -182px;
+}
+.content .c-content .c-r .excellent {
+	border: 1px solid #dfdfdf;
+	padding: 10px;
+	margin-top: 20px;
+	background-color: #fff
+}
+.content .c-content .c-r .e-1 {
+	width: 100%;
+	border: 1px solid #dfdfdf;
+	margin-top: 20px;
+	padding: 5px 0;
+	position: relative;
+	cursor: pointer
+}
+.content .c-content .c-r .e-1:hover h5 {
+	color: #499e50
+}
+.content .c-content .c-r .e-1 .e-l {
+	float: left;
+	width: 60px;
+	height: 60px;
+	overflow: hidden;
+	margin-top: 5px;
+	margin-left: 5px
+}
+.content .c-content .c-r .e-1 .e-l img {
+	width: 60px;
+	height: 60px
+}
+.content .c-content .c-r .e-1 .e-r {
+	float: left;
+	margin-left: 10px;
+	width: 150px
+}
+.content .c-content .c-r .e-1 .e-r p {
+	width: 150px;
+	height: 19px;
+	overflow: hidden;
+	margin: 5px 0
+}
+.content .c-content .c-r .e-1 .e-r a {
+	color: #999;
+	padding-left: 12px;
+	background: url(../../../sxsfdx/img/teacher/teacher-icon.png) no-repeat -42px -549px
+}
+.content .c-content .c-r .e-1 .e-r h6 {
+	font-size: 12px;
+	color: #999;
+}
+.content .c-content .c-r .hot .h-title p {
+	background: url(../../../sxsfdx/img/teacher/teacher-icon.png) no-repeat -48px -20px
+}
+.content .c-content .c-r .excellent .h-title p {
+	background: url(../../../sxsfdx/img/teacher/teacher-icon.png) no-repeat -48px -91px
+}
+.content .c-content .c-r .online {
+	border: 1px solid #dfdfdf;
+	padding: 10px;
+	margin-top: 20px;
+	background-color: #fff
+}
+.content .c-content .c-r .online .h-title p {
+	background: url(../../../sxsfdx/img/teacher/teacher-icon.png) no-repeat -48px -161px
+}

@@ -1,0 +1,83 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>地图显示</title>
+	<style type="text/css">
+		body{margin:0;height:100%;width:100%;position:absolute;}
+		#mapContainer{height:90%;width:100%;}
+	</style>
+	<link rel = "stylesheet" href = "pc/style/prop.css" />
+</head>
+<body>
+	<div id="mapContainer"></div>
+	<div style="margin: 10px" align="right">
+	<a class='btn red pd510 radius5' href='javascript:;' onclick="ok()">确定</a>
+	</div>
+	<script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=4e9f11f35d44b124046df6481049a263"></script>
+	<script type="text/javascript">
+		var curLng = window.opener.lng;
+		var curLat = window.opener.lat;
+		var hasPosition = curLng != '' && curLat != '' && parseInt(curLng) != 0 && parseInt(curLat) != 0;
+		//初始化地图对象，加载地图
+		var map,marker;
+		map = new AMap.Map("mapContainer", {
+			resizeEnable: true
+		});
+		marker = new AMap.Marker({
+			icon:"http://webapi.amap.com/images/marker_sprite.png",
+			draggable:true, //点标记可拖拽
+			cursor:'move',  //鼠标悬停点标记时的鼠标样式
+			raiseOnDrag:true//鼠标拖拽点标记时开启点标记离开地图的效果
+		});
+		if(hasPosition){
+			map = new AMap.Map("mapContainer", {
+				resizeEnable: true,
+				view: new AMap.View2D({
+					center: new AMap.LngLat(curLng,curLat)
+				})
+			});
+			marker.setPosition(new AMap.LngLat(curLng,curLat));
+			marker.setMap(map);  //在地图上添加点
+		}
+		//地图中添加地图操作ToolBar插件
+		map.plugin(["AMap.ToolBar"],function(){	
+			var toolBar = new AMap.ToolBar(); 
+			map.addControl(toolBar);		
+		});
+		//创建右键菜单
+		var contextMenu = new AMap.ContextMenu();
+		//右键放大
+		contextMenu.addItem("放大一级",function(){
+		map.zoomIn();	
+		},0);
+		//右键缩小
+		contextMenu.addItem("缩小一级",function(){
+			map.zoomOut();
+		},1);
+		//右键显示全国范围
+		contextMenu.addItem("缩放至全国范围",function(e){
+			map.setZoomAndCenter(4,new AMap.LngLat(108.946609,34.262324));
+		},2);
+		//右键添加Marker标记
+		contextMenu.addItem("添加标记",function(e){
+			marker.setPosition(contextMenuPositon);
+			marker.setMap(map);  //在地图上添加点
+		},3);
+		
+		//地图绑定鼠标右击事件——弹出右键菜单
+		AMap.event.addListener(map,'rightclick',function(e){
+			contextMenu.open(map,e.lnglat);
+			contextMenuPositon = e.lnglat;
+		});
+		
+		function ok(){
+			var position = marker.getPosition();
+			if(position){
+				window.opener.setPosition(position);
+			}
+			window.close();
+		}
+	</script>
+</body>
+</html>

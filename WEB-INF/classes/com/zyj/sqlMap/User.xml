@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="User">
+
+	<sql id="Base_Column">
+		id, account, password, name, gender, birthday, create_time,
+		last_login_time
+	</sql>
+	<sql id="Base_Column_Axis">
+		id, account, password, name, gender, birthday, create_time as createTime,
+		last_login_time as loginTime
+	</sql>
+
+	<sql id="Base_Column_Axis_A">
+		a.id, a.account as account, a.password, a.name, a.gender, a.birthday,
+		a.create_time as createTime, a.last_login_time as loginTime
+	</sql>
+
+	<select id="selectById" resultType="User" parameterType="java.util.HashMap">
+		select
+		<include refid="Base_Column" />
+		from user_info
+		where id = #{id,jdbcType=VARCHAR}
+	</select>
+
+	<select id="selectByCondition" resultType="User" parameterType="java.util.HashMap">
+		select
+		<include refid="Base_Column_Axis" />
+		from user_info
+		where 1=1
+		<if test="id != null">
+			and id = #{id}
+		</if>
+		<if test="token != null">
+			and token = #{token}
+		</if>
+		<if test="account != null">
+			and account = #{account}
+		</if>
+		<if test="password != null">
+			and password = #{password}
+		</if>
+
+	</select>
+
+	<select id="queryByAccount" parameterType="java.util.HashMap"
+		resultType="java.util.HashMap">
+		select 
+			*
+		from 
+			user_info a 
+		where 
+			a.account = #{account} and a.password = #{password}
+	</select>
+
+	<update id="updateLastLoginTime" parameterType="java.util.HashMap">
+		update user_info
+		set last_login_time = #{loginTime} where account =#{account}
+	</update>
+
+	<select id="queryUserArea" parameterType="java.util.HashMap"
+		resultType="java.util.HashMap">
+		SELECT 
+			a.id,a.area_title as title 
+		FROM 
+			user_area_info a 
+		WHERE 
+			<if test="id != 1">
+				a.area_admin_id = #{user_id}
+			</if>
+	</select>
+
+	<insert id="insertUser" parameterType="java.util.HashMap">
+		<selectKey resultType="java.lang.Integer" keyProperty="id">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+		INSERT INTO user_info
+		(name,password,account,area_id,role_id,org_id,sub_org_id,team_id,sub_team_id,gender,birthday,age,occupation,education,is_admin,create_user_id,create_time)
+		VALUES
+		(#{name}, #{password},
+		#{account},#{area_id},#{role_id},#{org_id},#{sub_org_id},#{team_id},#{sub_team_id},#{gender},#{birthday},#{age},#{occupation},#{education},#{is_admin},#{create_user_id}
+		,sysdate())
+	</insert>
+
+	<insert id="insertUserArea" parameterType="java.util.HashMap">
+		INSERT INTO
+			user_area_info
+			(area_title,create_user,area_admin_id,create_time)
+		VALUES
+			(#{area_title}, #{create_user_id}, #{area_admin_id}, sysdate())
+	</insert>
+
+	<select id="queryUserOrganization" parameterType="java.util.HashMap"
+		resultType="java.util.HashMap">
+		SELECT 
+			a.id AS id,org_info AS org_title, b.area_title AS area_title, c.name AS admin_user_name
+		FROM
+			user_org_info a 
+		LEFT JOIN
+			user_area_info b ON a.area_id=b.id
+		LEFT JOIN
+			user_info c ON a.admin_user_id = c.id
+		WHERE a.create_user_id = #{user_id}
+	</select>
+
+	<insert id="insertUserOrganization" parameterType="java.util.HashMap">
+		<selectKey resultType="java.lang.Integer" keyProperty="id">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+		INSERT INTO
+			user_org_info
+				(org_info, area_id, admin_user_id, create_user_id, sys_title,org_status, create_time)
+		VALUES
+				(#{org_title}, #{area_id}, #{admin_user_id}, #{create_user_id}, #{sys_title}, 1, sysdate())
+	</insert>
+	
+	<select id="queryUserByParentId" parameterType="java.util.HashMap"
+		resultType="java.util.HashMap">
+		SELECT
+			a.id as id, a.name as name, b.org_info as org_title, c.sub_org_title as sub_org_title, d.team_title as team_title, e.sub_team_title as sub_team_title
+		FROM
+			user_info a
+		LEFT JOIN
+			user_org_info b ON a.org_id = b.id
+		LEFT JOIN
+			user_sub_org c ON a.sub_org_id = c.id
+		LEFT JOIN
+			user_team_info d ON a.team_id = d.id
+		LEFT JOIN
+			user_sub_team_info e ON a.sub_team_id = e.id
+		LEFT JOIN
+			user_permissions f ON f.user_id = #{user_id}
+		WHERE
+			f.user_id = #{user_id} AND a.org_id = f.org_id AND a.sub_org_id = f.sub_org_id AND (a.team_id = f.team_id OR f.team_id = 0) AND (a.sub_team_id = f.sub_team_id OR f.sub_team_id = 0) and a.id != #{user_id}
+	</select>
+	<select id="queryUserPermission" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			*
+		FROM
+			user_permissions a
+		WHERE
+			a.user_id = #{user_id}
+	</select>
+
+	<insert id="insertUserPermission" parameterType="java.util.HashMap">
+		INSERT INTO
+			user_permissions
+				(user_id, area_id ,org_id, sub_org_id, team_id, sub_team_id, is_admin, can_edit_scale, can_do_test, can_select_test, user_count_limit , service_start_time, service_end_time, create_time)
+		VALUES
+				(#{user_id}, #{area_id}, #{org_id}, #{sub_org_id}, #{team_id}, #{sub_team_id}, #{is_admin}, #{can_edit_scale}, #{can_do_test}, #{can_select_test}, #{user_count_limit}, #{service_start_time}, #{service_end_time}, sysdate())
+	</insert>
+
+	<select id="queryUserBaseInfoById" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			a.name as name, a.gender as gender ,a.age as age, a.occupation as occupation, a.education as education
+		FROM
+			user_info a
+		WHERE
+			a.id = ${user_id}
+	</select>
+	
+	<select id="querySubOrgList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			a.sub_org_title
+		FROM
+			user_sub_org a
+		LEFT JOIN
+			user_permissions b ON a.area_id = b.area_id AND a.org_id = b.org_id
+		WHERE
+			b.user_id = #{user_id}
+	</select>
+
+	<insert id="insertSubOrg" parameterType="java.util.HashMap">
+		<selectKey resultType="java.lang.Integer" keyProperty="id">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+		INSERT INTO user_sub_org
+			(sub_org_title,create_user_id,area_id,org_id,admin_user_id,sys_title,sub_org_status, create_time)
+		VALUES
+			(#{sub_org_title}, #{create_user_id}, #{area_id}, #{org_id},#{admin_user_id}, #{sys_title}, 1, sysdate())
+	</insert>
+
+	<select id="queryUserList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			a.id, 
+			a.name, 
+			a.account,
+			a.age,
+			a.gender,
+			a.role_id, 
+			b.area_title, 
+			c.org_info as org_title, 
+			d.sub_org_title,
+			e.id as team_id,
+			e.team_title,
+			f.id as sub_team_id,
+			f.sub_team_title
+		FROM
+			user_info a
+		LEFT JOIN
+			user_area_info b ON a.area_id = b.id
+		LEFT JOIN
+			user_org_info c ON a.org_id = c.id
+		LEFT JOIN
+			user_sub_org d ON a.sub_org_id = d.id
+		LEFT JOIN
+			user_team_info e ON a.team_id = e.id
+		LEFT JOIN
+			user_sub_team_info f ON a.sub_team_id = f.id
+		WHERE
+			(a.role_id = #{role_id}) AND (a.area_id = #{area_id} OR #{area_id} = 0) AND (a.org_id = #{org_id} OR #{org_id} = 0) AND (a.sub_org_id = #{sub_org_id} OR #{sub_org_id} = 0) AND (a.team_id = #{team_id} OR #{team_id} = 0) AND (a.sub_team_id = #{sub_team_id} OR #{sub_team_id} = 0)
+	</select>
+
+	<select id="queryAreaAdminUserList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			a.id, 
+			a.name
+		FROM
+			user_info a
+		LEFT JOIN
+			user_permissions b ON a.id = b.user_id
+		WHERE
+			b.area_id = #{area_id} AND a.role_id = #{role_id}
+	</select>
+
+	<update id="updateUserInfo" parameterType="java.util.HashMap">
+		UPDATE
+			user_info
+		<set>
+				<if test="name != null">
+						name = #{name},
+				</if>
+				<if test="group_id != null">
+						account = #{account},
+				</if>
+				<if test="password != null and password != ''">
+						password = #{password},
+				</if>
+				<if test="age != null">
+						age = #{age},
+				</if>
+				<if test="gender != null">
+						gender = #{gender},
+				</if>
+				<if test="area_id != null">
+						area_id = #{area_id},
+				</if>
+				<if test="org_id != null">
+						org_id = #{org_id},
+				</if>
+				<if test="sub_org_id != null">
+						sub_org_id = #{sub_org_id},
+				</if>
+				<if test="team_id != null">
+						team_id = #{team_id},
+				</if>
+				<if test="sub_team_id != null">
+						sub_team_id = #{sub_team_id}
+				</if>
+		</set>
+		WHERE
+			id = #{id}
+	</update>
+	
+	<update id="updateUserPermission" parameterType="java.util.HashMap">
+		UPDATE
+			user_permissions
+		<set>
+				<if test="area_id != null">
+						area_id = #{area_id},
+				</if>
+				<if test="org_id != null">
+						org_id = #{org_id},
+				</if>
+				<if test="sub_org_id != null">
+						sub_org_id = #{sub_org_id},
+				</if>
+				<if test="team_id != null">
+						team_id = #{team_id},
+				</if>
+				<if test="sub_team_id != null">
+						sub_team_id = #{sub_team_id}
+				</if>
+		</set>
+		WHERE
+			id = #{user_id}
+	</update>
+	
+	<delete id="deleteUser" parameterType="java.util.HashMap">
+		DELETE FROM
+			user_info
+		WHERE
+			id = #{user_id}
+	</delete>
+	
+	<delete id="deleteUserPermission" parameterType="java.util.HashMap">
+		DELETE FROM
+			user_permissions
+		WHERE
+			user_id = #{user_id}
+	</delete>
+</mapper>

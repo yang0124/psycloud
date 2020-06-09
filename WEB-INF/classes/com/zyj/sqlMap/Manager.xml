@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="Manager">
+	<insert id="insertUserScale" parameterType="java.util.HashMap">
+		INSERT INTO
+		user_scale_relationship
+		(title,test_interval,show_clock,time_type,avalid_time_start,avalid_time_end,norm_id,alert_id,create_user_id,select_user_list,select_scale_list,create_time)
+		values
+		(#{title},#{test_interval},#{show_clock},#{time_type},#{avalid_time_start},#{avalid_time_end},#{norm_id},#{alert_id},#{create_user_id},#{select_user_list},#{select_scale_list},sysdate())
+	</insert>
+
+	<select id="queryTestBatchList" parameterType="java.util.HashMap"
+		resultType="java.util.HashMap">
+		SELECT
+		*
+		FROM
+		test_batch a
+		WHERE
+		a.create_user_id = #{create_user_id}
+	</select>
+	<insert id="insertTestBatch" parameterType="java.util.HashMap">
+		<selectKey resultType="java.lang.Integer" keyProperty="id">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+		INSERT INTO
+		test_batch
+		(title,create_user_id,create_time)
+		VALUES
+		(#{title}, #{create_user_id}, sysdate())
+	</insert>
+
+	<select id="queryTestBatch" parameterType="java.util.HashMap"
+		resultType="java.util.HashMap">
+		SELECT
+			*
+		FROM
+			test_batch a
+		WHERE
+			a.id = #{batch_id}
+	</select>
+
+	<insert id="insertTestBatchUsers" parameterType="java.util.List">
+		INSERT INTO
+			test_batch_user
+			(batch_id,user_id)
+		VALUES
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			(#{item.batch_id}, #{item.user_id})
+		</foreach>
+	</insert>
+
+	<delete id="deleteTestBatchUsers" parameterType="java.util.HashMap">
+		DELETE FROM 
+			test_batch_user 
+		WHERE 
+			batch_id = #{batch_id}
+	</delete>
+
+	<update id="updateTestBatch" parameterType="java.util.HashMap">
+		UPDATE test_batch
+		<set>
+			<if test="title != null">
+				title = #{title},
+			</if>
+			<if test="avalid_time_start != null">
+				avalid_time_start = #{avalid_time_start},
+			</if>
+			<if test="avalid_time_end != null">
+				avalid_time_end = #{avalid_time_end},
+			</if>
+		</set>
+		WHERE id = #{batch_id} AND create_user_id = #{create_user_id}
+	</update>
+	
+	<select id="queryTestBatchUsers" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			b.id as id, b.name as name, c.org_info as org_title, d.sub_org_title as sub_org_title, e.team_title as team_title, f.sub_team_title as sub_team_title
+		FROM
+			test_batch_user a
+		LEFT JOIN
+			user_info b ON a.user_id = b.id
+		LEFT JOIN
+			user_org_info c ON b.org_id = c.id
+		LEFT JOIN
+			user_sub_org d ON b.sub_org_id = d.id
+		LEFT JOIN
+			user_team_info e ON b.team_id = e.id
+		LEFT JOIN
+			user_sub_team_info f ON b.sub_team_id = f.id
+		WHERE
+			a.batch_id = #{batch_id}
+	</select>
+	
+	<insert id="insertTestBatchScale" parameterType="java.util.HashMap">
+		<selectKey resultType="java.lang.Integer" keyProperty="id">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+		INSERT INTO
+			test_batch_scale
+			(batch_id,scale_id,test_interval,show_clock,time_type,norm_id,alert_id, is_show_scale_title)
+		VALUES
+			(#{batch_id}, #{scale_id}, #{test_interval}, #{show_clock}, #{time_type}, #{norm_id}, #{alert_id}, #{is_show_scale_title})
+	</insert>
+
+	<select id="queryTestBatchScales" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			a.id as id,
+			a.batch_id as batch_id,
+			a.scale_id as scale_id,
+			b.code AS code ,
+			b.title_cn AS scale_title,
+			a.test_interval AS test_interval, 
+			a.show_clock AS show_clock, 
+			a.time_type AS time_type, 
+			a.norm_id AS norm_id, 
+			a.alert_id AS alert_id,
+			c.title AS alert_title,
+			a.is_show_scale_title AS is_show_scale_title
+		FROM
+			test_batch_scale a
+		LEFT JOIN
+			scale_info b ON a.scale_id = b.id
+		LEFT JOIN
+			scale_alert_info c ON a.alert_id = c.id
+		WHERE
+			a.batch_id = #{batch_id}
+	</select>
+	
+	<select id="queryBatchUserCont" parameterType="java.util.HashMap" resultType="int">
+		SELECT
+			COUNT(*)
+		FROM
+			test_batch_user a
+		WHERE
+			a.batch_id = #{batch_id}
+	</select>
+	
+	<select id="queryBatchScaleCont" parameterType="java.util.HashMap" resultType="int">
+		SELECT
+			COUNT(*)
+		FROM
+			test_batch_scale a
+		WHERE
+			a.batch_id = #{batch_id}
+	</select>
+	
+	<delete id="deleteTestBathById" parameterType="java.util.HashMap">
+		DELETE FROM 
+			test_batch
+		WHERE 
+			id = #{batch_id}
+	</delete>
+
+	<update id="updateTestBatchScale" parameterType="java.util.HashMap">
+		UPDATE
+			test_batch_scale
+		<set>
+				<if test="scale_id != null">
+						scale_id = #{scale_id},
+				</if>
+				<if test="test_interval != null">
+						test_interval = #{test_interval},
+				</if>
+				<if test="show_clock != null">
+						show_clock = #{show_clock},
+				</if>
+				<if test="time_type != null">
+						time_type = #{time_type},
+				</if>
+				<if test="alert_id != null">
+						alert_id = #{alert_id},
+				</if>
+				<if test="is_show_scale_title != null">
+						is_show_scale_title = #{is_show_scale_title}
+				</if>
+		</set>
+		WHERE
+			id = #{batch_scale_id}
+	</update>
+
+	<delete id="deleteBatchScale" parameterType="java.util.HashMap">
+		DELETE FROM
+			test_batch_scale
+		WHERE
+			id = #{batch_scale_id}
+	</delete>
+	
+</mapper>

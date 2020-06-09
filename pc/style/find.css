@@ -1,0 +1,145 @@
+body {
+	background:#fff;
+}
+
+.fl_L{
+	float:left;
+}
+
+.fsz_14{
+	font-size:14px;
+}
+
+.fsz_20{
+	font-size:20px;
+}
+
+.mg_T30{
+	margin-top:30px;
+}
+
+.mg_L20{
+	margin-left:20px;
+}
+
+.mg_L25{
+	margin-left:25px;
+}
+
+.mg_L30{
+	margin-left:30px;
+}
+
+.mg_R30{
+	margin-right:30px;
+}
+
+.pd1590{
+	padding:15px 100px;
+}
+
+.pd15230{
+	padding:15px 230px;
+}
+
+
+.find_password{
+	position:absolute;
+	margin-top:15%;
+	left:50%;
+	margin-left:-272px;
+	width:555px;
+	height:430px;
+	border:1px solid #ccc;
+}
+
+.find_password span.title{
+	float:left;
+	width:100%;
+	height:50px;
+	line-height:50px;
+	font-size:18px;
+	text-align:center;
+	margin-bottom:30px;
+	background:#F7F7F7;
+} 
+
+.find_password span{
+	float:left;
+	width:100%;
+	height:40px;
+	margin-bottom:30px;
+}
+
+.find_password b{
+	float:left;
+	width:105px;
+	line-height:40px;
+	font-size:18px;
+	text-align:right;
+}
+
+.find_password input.pass_val{
+	float:left;
+	width:430px;
+	height:38px;
+	line-height:40px\9;
+	font-size:18px;
+	border:1px solid #CCCCCC;
+}
+
+.find_password i{
+	float:left;
+	width:65px;
+	height:65px;
+}
+
+.find_password i.ac_1{
+	background:url(../images/u14.png) 9px 5px no-repeat;
+}
+
+.find_password i.pass_1{
+	background:url(../images/u12.png) 13px 5px no-repeat;
+}
+
+.find_password span.account{
+	float:left;
+	width:90%;
+	height:60px;
+	margin-bottom:30px;
+	border:1px solid #ccc;
+	margin-left:25px
+}
+
+.find_password input.account_input{
+	float:left;
+	width:433px;
+	height:60px;
+	line-height:60px\9;
+	text-indent:5px;
+	font-size:18px;
+	border-left:1px solid #CCCCCC;
+	border-top:0px;
+	border-right:0px;
+	border-bottom:0px;
+}
+
+.find_password input.account_input{
+	float:left;
+	width:433px;
+	height:60px;
+	line-height:60px\9;
+	text-indent:5px;
+	font-size:18px;
+	border-left:1px solid #CCCCCC;
+	border-top:0px;
+	border-right:0px;
+	border-bottom:0px;
+}
+
+.find_password span a.find{
+	float:right;
+	color:#000;
+	font-size:14px;
+
+}

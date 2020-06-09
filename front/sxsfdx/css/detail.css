@@ -1,0 +1,697 @@
+body{
+    background: #F9F9F9;
+}
+.section{
+    /*height:380px;*/
+    -webkit-box-shadow: 0 5px 20px #f2f2f2;
+    -moz-box-shadow: 0 5px 20px #f2f2f2;
+    box-shadow: 0 5px 20px #f2f2f2;
+    margin-bottom: 20px;
+    background: #fff;
+}
+.section-t{
+    /*height:326px;*/
+    border-bottom: 1px solid #eeeeee;
+    position:relative;
+}
+.section-l{
+    width:620px;
+    height:326px;
+    position: relative;
+}
+.section-l:before{
+    position: absolute;
+    width:79px;
+    height:89px;
+    content: '';
+    left:0;
+    top:0;
+    z-index: 1;
+    background: url("../../sxsfdx/img/declaretion/jingpin.png") no-repeat;
+}
+.layui-carousel{
+    background-color: #fff !important;
+    padding:20px;
+}
+.layui-carousel-arrow{
+    width:0;
+    opacity: 0;
+}
+.layui-carousel:hover .layui-carousel-arrow{
+    width:0 !important;
+    opacity:0 !important;
+}
+.layui-carousel-ind ul{
+    margin:0 auto;
+}
+.summary{
+    width:580px;
+}
+.summary .summary-box{
+    position: relative;
+    padding: 20px;
+}
+.summary .summary-box .icon-img{
+    display: inline-block;
+    position: relative;
+    min-height: 30px;
+    margin-right: 5px;
+}
+.summary .summary-box .icon-img:hover .icon-title{
+    display: block;
+}
+.summary .summary-box .icon-img .icon-title{
+    margin-left: -45px;
+}
+.summary .summary-box .icon-img .icon-title .icon-title-i{
+    font-size: 14px;
+    font-weight: 200;
+}
+.summary-box h2{
+    font-size: 18px;
+    font-weight: bold;
+}
+.uc-starrating {
+    width: 120px;
+    position: relative;
+    height: 50px;
+    display: inline-block;
+    line-height: 50px;
+}
+.uc-starrating_wrap .m-star {
+    background: url(../../sxsfdx/img/declaretion/star.png) repeat-x;
+    position: relative;
+}
+.uc-starrating_wrap .m-star {
+    float: left;
+    width: 75px;
+    height: 13px;
+    margin-right: 2px;
+}
+.uc-starrating_score {
+    vertical-align: top;
+    color: #666666;
+}
+.m-hot {
+    padding-left: 35px;
+    position: relative;
+    display: inline-block;
+    height: 40px;
+    line-height: 40px;
+    color: #adacac;
+}
+.uc-starrating:after {
+    width: 1px;
+    height: 16px;
+    background-color: #dbdbdb;
+    position: absolute;
+    top: 17px;
+    right: 0;
+    content: '';
+}
+.m-hot:before {
+    position: absolute;
+    top: 13px;
+    left: 12px;
+    content: '';
+    width: 13px;
+    height: 15px;
+    background: url(../../sxsfdx/img/declaretion/people.png) no-repeat;
+}
+.test{
+    margin-top:35px;
+}
+.test span{
+    display: inline-block;
+    position: relative;
+    /*height: 25px;*/
+    line-height: 35px;
+    background-color: #FFB800;
+    color: #fff;
+    padding:0 5px 0 5px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    font-size: 16px;
+    /*letter-spacing: 1px;*/
+}
+.test span a{
+    color: red;
+    font-size: 16px;
+    /*letter-spacing: 1px;*/
+}
+.test .test-icon,.test .warn-icon,.test .right-icon{
+    position: absolute;
+    width: 21px;
+    height: 23px;
+    background: url("../../sxsfdx/img/declaretion/test.png") no-repeat;
+    top: 6px;
+    left:0px;
+}
+.test .test-icon{
+    background: url("../../sxsfdx/img/declaretion/test.png") no-repeat;
+}
+.test .warn-icon{
+    width:24px;
+    background: url("../../sxsfdx/img/declaretion/warn2.png") no-repeat;
+    background-size: 100%;
+}
+.test .right-icon{
+    width:24px;
+    background: url("../../sxsfdx/img/declaretion/right.png") no-repeat;
+    background-size: 100% 100%;
+}
+.section-b ul{
+    height: 50px;
+}
+.section-b ul li{
+    display: inline-block;
+    margin-top: 10px;
+    width:110px;
+    height:30px;
+    line-height:30px;
+    text-align: center;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    margin-left: 20px;
+    position: relative;
+}
+.section-b ul .active{
+    background-color: #1c77c3;
+}
+.section-b ul li:nth-child(1):before,.section-b ul li:nth-child(2):before{
+    position: absolute;
+    top: 5px;
+    right: -13px;
+    /* right: -10px; */
+    background-color: #bebdbd;
+    width: 1px;
+    height: 20px;
+    content: '';
+}
+.section-b ul li a{
+    color: #2e2e2e;
+}
+.section-b ul li:hover{
+    background-color: #1c77c3;
+}
+.section-b ul li:hover a{
+    color: #fff;
+}
+.section-b ul .active a{
+    color: #fff;
+}
+
+/*评论内容*/
+.comment{
+    margin-bottom:20px;
+
+}
+.tab-content-l{
+    width:915px;
+    background: #fff;
+}
+.add-comment{
+    padding:25px;
+    border-bottom:1px solid #ededed;
+}
+.add-t span{
+    display: inline-block;
+    height:40px;
+    line-height: 40px;
+    font-size: 20px;
+    color: #2e2e2e;
+    padding-left: 50px;
+    position: relative;
+}
+.add-t span:before{
+    position: absolute;
+    content: '';
+    top: 8px;
+    left: 20px;
+    width: 23px;
+    height: 24px;
+    background: url(../../sxsfdx/img/declaretion/edit.png) no-repeat;
+}
+.add-t textarea{
+    background-color: #f9fdff;
+    border-color: #ececec;
+    height:78px;
+}.add-t button{
+     background-color: #1c77c3;width: 112px; height: 38px; text-align: center;
+     -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+    border-radius: 3px;
+    font-size: 18px;
+ }
+.comment-list{
+    border-top: 1px solid #ededed;
+    padding: 45px 0 25px 0;
+    /*margin: 0 45px;*/
+ }
+.comment-list:first-child{
+    border-top: none;
+}
+.reply-list{
+    background-color: #fbfbfb;
+}
+.reply-list .reply{
+    padding: 10px 0;
+    margin: 10px 0;
+}
+.comment-info{
+    border-top: 1px solid #ededed;
+    padding: 45px 0 25px 0;
+    margin: 0 45px;
+}
+.comment-info:first-child{
+    border-top: none;
+}
+.comment-c-r ,
+.comment-c-l,
+.comment-ol-l{
+    display: inline-block;
+}
+.comment-c-l,
+.comment-ol-l{
+    width:95px;
+}
+.comment-c-l img,
+.comment-ol-l img{
+    display: block;
+    width: 41px;
+    height: 41px;
+    margin:0 auto;
+}
+.comment-c-l span,
+.comment-ol-l span{
+    display: inline-block;
+    width:100%;
+    text-align: center;
+    color: #f39237;
+    margin-top: 10px;
+}
+.comment-c-r{
+    width:700px;
+}
+.comment-c-r .comment-words{
+    color: #494949;
+    font-size: 12px;
+    line-height: 22px;
+}
+.comment-time{
+    color: #c6c6c6;
+    font-size: 14px;
+    display: inline-block;
+    margin-top: 10px;
+}
+.comment-btn,
+.delete-btn{
+    display: inline-block;
+    margin-top: 10px;
+    width:60px;
+    text-align: right;
+    color: #959595;
+    font-size: 14px;
+    margin-left: 10px;
+    position: relative;
+    cursor: pointer;
+}
+.comment-btn .reply-btn,
+.delete-btn .del-btn{
+    display: block;
+    width:100%;
+    height:100%;
+}
+.comment-btn:hover{
+    color: #1c77c3;
+}
+.comment-btn:hover:before{
+    background: url("../../sxsfdx/img/declaretion/comment1.png") no-repeat;
+}
+.comment-btn:before,
+.delete-btn:before{
+    position: absolute;
+    left:0;
+    width:20px;
+    height:18px;
+    content: '';
+}
+.delete-btn:before{
+    top: 1px;
+    background: url("../../sxsfdx/img/declaretion/delete.png") no-repeat;
+}
+.comment-btn:before{
+    top: 3px;
+    background: url("../../sxsfdx/img/declaretion/comment.png") no-repeat;
+}
+ .layui-btn{
+    background-color: #1c77c3 !important;
+}
+.layui-btn:hover{
+    opacity: .8 !important;
+    filter: alpha(opacity=80) ;
+    color: #fff;
+}
+.comment-c-r  ol{
+    background-color: #fbfbfb;
+}
+.comment-c-r  ol li{
+    padding:10px 0;
+    margin: 10px 0;
+}
+.comment-c-r .comment-ol-words{
+    color: #494949;
+    font-size: 12px;
+}
+.comment-ol-r{
+    width: 580px;
+    padding: 0 10px;
+    display: inline-block;
+}
+.layui-laypage .layui-laypage-curr .layui-laypage-em{
+    background-color: #1c77c3 !important;
+}
+.layui-laypage a:hover{
+    color: #1c77c3;
+}
+.layui-laypage input:focus, .layui-laypage select:focus{
+    border-color: #1c77c3 !important;
+}
+/*软件评价*/
+.tab-content-r{
+    width:265px;
+    /*background: #fff;*/
+}
+.eval{
+    background: #fff;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ededed;
+}
+.eval h3{
+    color: #5c5c5c;
+    height:50px;
+    line-height: 50px;
+    font-size: 20px;
+    border-bottom: 1px solid #ededed;
+    padding-left: 20px;
+}
+.eval .text-title{
+    padding:15px 0 0  20px;
+    font-size: 12px;
+    position: relative;
+}
+.eval .text-star{
+    position:relative;
+    margin:3px 5px 0;
+    display:inline-block;
+    width:75px;
+    height:13px;
+}
+.eval .text-score{
+    color:#f39237;
+}
+.eval .text-t-star,.eval .text-t-star2{
+    display: inline-block;
+    position: absolute;
+    height:13px;
+    /*margin: 2px 0 0 5px ;*/
+    cursor: pointer;
+}
+.eval .text-t-star{
+    width:75px;
+    background: url("../../sxsfdx/img/declaretion/star2.png");
+}
+.eval .text-t-star2{
+    width:0;
+    background: url("../../sxsfdx/img/declaretion/star.png");
+}
+.eval textarea{
+    background-color: #f9fdff;
+    border-color: #ececec;
+    height: 78px;
+}
+.eval button{
+    background-color: #1c77c3;
+    width: 112px;
+    height: 38px;
+    text-align: center;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    font-size: 18px;
+}
+.eval-box{
+    padding:0 20px;
+    background-color: #fff;
+}
+.eval-c ul li{
+    margin-bottom: 10px;
+}
+.eval-box .eval-t{
+    color: #adacac;
+    font-size: 16px;
+    display: block;
+    height:50px;
+    line-height:50px;
+}
+.eval-c-img{
+    display: inline-block;
+}
+.eval-c-img img {
+    padding: 5px 0;
+    width: 38px;
+    height: 38px;
+}
+.eval-c-name,
+.eval-c-time{
+    display: inline-block;
+    color: #f39237;
+    font-size:12px;
+    height:20px;
+    line-height: 20px;
+}
+.eval-c-time{
+    color:#8d8d8d;
+    padding-left:10px;
+}
+.eval-c-content{
+    line-height: 22px;
+    margin-top: 0px;
+    font-size:12px;
+    color: #5C5C5C;
+}
+.eval-c-star{
+    width:100%;
+    position: relative;
+    height:13px;
+    margin-top: 5px;
+}
+.eval-c-star span{
+    width:75px;
+    height:13px;
+    display: block;
+    position: absolute;
+    top:0;
+    left:0;
+}
+.eval-c-star span:nth-child(1){
+    width:75px;
+    background: url("../../sxsfdx/img/declaretion/star2.png") repeat-x;
+}
+.eval-c-star span:nth-child(2){
+    width: 60px;
+    background: url("../../sxsfdx/img/declaretion/star.png") repeat-x;
+}
+
+/*软件详情部分*/
+.softdetail .soft-t{
+    font-size: 18px;
+    padding:20px 0 10px 0;
+    height:30px;
+    line-height: 30px;
+    color: #2e2e2e;
+}
+.softdetail .tab-content-l{
+    padding-bottom: 45px;
+}
+.softdetail .soft-t h3{
+    position: relative;
+}
+.softdetail .soft-t h3:before{
+    position: absolute;
+    top:5px;
+    left: -20px;
+    background-color: #1c77c3;
+    width:6px;
+    height:20px;
+    content: '';
+}
+/*表格*/
+.softdetail .soft-t.layui-table td, .layui-table th{
+    text-align: left;
+}
+.soft-table .layui-table thead>tr{
+    background-color: #e3f3fa;
+}
+.soft-table .layui-table tbody>.items-tr:nth-child(even) {
+    background-color: #f5f5f5;
+}
+.soft-table .layui-table tbody>.items-tr:nth-child(odd){
+    background-color: #fafafa;
+}
+.soft-table .layui-table tbody>.items-tr:hover{
+    background-color: #F5F5F5;
+}
+.soft-table .layui-table tr .notAllow a{
+    color: #b4b4b4;
+    cursor: not-allowed;
+}
+.soft-table .layui-table tr .allow a{
+    color: #1c77c3;
+}
+/*视频部分*/
+.soft-video-box{
+    margin:20px 0 0 -20px;
+}
+.soft-video-box ul li{
+    margin-left:20px;
+    display: inline-block;
+    cursor: pointer;
+}
+.soft-v-box-top{
+    position: relative;
+}
+.soft-v-box-top img{
+    display: block;
+    width:259px;
+    height:147px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+.soft-v-box-top video{
+    position: absolute;
+    display: block;
+    width:259px;
+    height:147px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    top:0;
+    left:0;
+    display: none;
+}
+.soft-v-box-top{
+    position: relative;
+}
+.soft-v-box-bottom span{
+    display: block;
+    text-align: center;
+    height: 38px;
+    line-height: 38px;
+    /*color: #e08d23;*/
+    color: #5c5c5c;
+    font-size: 13px;
+}
+.soft-v-box-top i{
+    display: block;
+    width:41px;
+    height:41px;
+    position: absolute;
+    z-index:99;
+    top:50%;
+    left:50%;
+    margin-top: -20px;
+    margin-left: -20px;
+    background: url("../../sxsfdx/img/declaretion/video3.png") no-repeat;
+}
+.soft-video-box ul li:hover .soft-v-box-top i{
+    background: url("../../sxsfdx/img/declaretion/video2.png") no-repeat;
+}
+.soft-video-box ul li:hover .soft-v-box-top:before{
+    width:100%;
+    height:100%;
+    position: absolute;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    top:0;
+    left:0;
+    background: url("../../sxsfdx/img/declaretion/mesk.png") no-repeat;
+    content: '';
+    z-index: 10;
+}
+.soft-video-box ul li:hover .soft-v-box-bottom span{
+    color: #e08d23;
+}
+/*相关文档*/
+.soft-doc-c li{
+    display: block;
+    width:100%;
+    height: 48px;
+    line-height: 48px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border-bottom:1px solid #ededed;
+
+}
+.soft-doc-c li a{
+    display: inline-block;
+    padding-right:36px;
+    position: relative;
+    font-size: 15px;
+}
+.soft-doc-c li i {
+    display: inline-block;
+    position: absolute;
+    width:21px;
+    height:19px;
+    top:0;
+    right:0;
+    margin-left: 15px;
+    background: url("../../sxsfdx/img/declaretion/down1.png") no-repeat;
+}
+.soft-doc-c li a:hover{
+    color:#1c77c3;
+}
+.soft-doc-c li a:hover i{
+    background: url("../../sxsfdx/img/declaretion/down2.png") no-repeat;
+}
+/*全部评价弹框*/
+.eval-c-box{
+    height:340px;
+    overflow-y: scroll;
+}
+
+.layui-layer-page .layui-layer-title {
+    padding: 0 80px 0 42px;
+    height: 60px;
+    line-height: 60px;
+    border:none;
+    font-size: 15px;
+    color: #333;
+    overflow: hidden;
+    background-color: #fff;
+    border-radius: 2px 2px 0 0;
+    font-weight: bold;
+}
+.layui-layer-page .layui-layer-max,
+.layui-layer-page .layui-layer-min{
+    width:0;
+}
+.layui-layer-page .layui-layer-setwin .layui-layer-min cite{
+    width:0;
+}
+.layui-layer-page .layui-layer-setwin {
+    position: absolute;
+    right: 38px;
+    top: 26px;
+    font-size: 0;
+    line-height: initial;
+}
+#evalFrame{
+    width:90%;
+}

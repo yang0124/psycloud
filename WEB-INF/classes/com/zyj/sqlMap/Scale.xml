@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="Scale">
+	<select id="queryScaleTypeListByUserId" parameterType="java.util.HashMap"
+		resultType="java.util.HashMap">
+		select *
+		from scale_type a where a.user_id = #{user_id} ||
+		a.user_id = -1
+		order by a.id
+	</select>
+
+	<insert id="insertScaleTypeByUserId" parameterType="java.util.HashMap">
+		insert into
+		scale_type (user_id, title, create_time)
+		values
+		(#{user_id,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR},sysdate())
+	</insert>
+
+	<select id="queryScaleListByUserId" parameterType="java.util.HashMap"
+		resultType="java.util.HashMap">
+		select *
+		from scale_info a left join scale_type b on
+		a.type=b.id where a.user_id = #{user_id} or a.user_id = -1 or #{user_id} = 1
+		order by a.id
+	</select>
+
+	<insert id="insertScaleByUserId" parameterType="java.util.HashMap">
+		insert into
+		scale_info
+		(user_id,code,title_cn,title_en,type,question_count,is_factor_visible,age_start,age_end,test_time_cost,brief,detail,guide,create_time)
+		values
+		(#{user_id,jdbcType=INTEGER},#{code},#{title_cn,jdbcType=VARCHAR},#{title_en,jdbcType=VARCHAR},#{type,jdbcType=INTEGER},#{question_count},#{is_factor_visible},
+		#{age_start},#{age_end},#{test_time_cost},#{brief},#{detail},#{guide},sysdate())
+	</insert>
+
+	<select id="queryScaleById" parameterType="java.util.HashMap"
+		resultType="java.util.HashMap">
+		select *
+		from scale_info a left join scale_type b on
+		a.type=b.id where (a.user_id = #{user_id} or #{user_id}=1) and a.id = ${scale_id}
+	</select>
+
+	<select id="queryScaleTitleById" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			a.title_cn, a.title_en
+		FROM
+			scale_info a
+		WHERE
+			a.id = ${scale_id}
+		order by a.id
+	</select>
+
+	<select id="queryQuestionByScaleId" parameterType="java.util.HashMap"
+		resultType="java.util.HashMap">
+		select *
+		from question_info a left join scale_info b on
+		a.scale_id=b.id where (a.user_id = #{user_id} || a.user_id = -1) and
+		a.scale_id = ${scale_id}
+		order by a.id
+	</select>
+
+	<insert id="insertFactor" parameterType="java.util.HashMap">
+		<selectKey resultType="java.lang.Integer" keyProperty="id">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+		insert into factor_info
+		(user_id, scale_id,
+		factor_code,factor_title,factor_level,factor_formula,
+		factor_is_join_to_chart, factor_is_visible, create_time)
+		values
+		(#{user_id},#{scale_id},#{factor_code},#{factor_title},#{factor_level},#{factor_formula},#{factor_is_join_to_chart},#{factor_is_visible},sysdate())
+	</insert>
+
+	<select id="queryFactorById" parameterType="java.util.HashMap"
+		resultType="java.util.HashMap">
+		SELECT *
+		FROM factor_info a
+		WHERE (a.user_id = #{user_id} ||
+		a.user_id = -1) AND
+		a.id = ${factor_id}
+		order by a.id
+	</select>
+
+	<select id="queryFactorByScaleId" parameterType="java.util.HashMap"
+		resultType="java.util.HashMap">
+		SELECT
+			*
+		FROM
+			factor_info a
+		WHERE
+			a.scale_id = ${scale_id}
+		order by a.id
+	</select>
+
+	<update id="updateScaleById" parameterType="java.util.HashMap">
+		update scale_info
+		<set>
+			<if test="code != null">
+				code = #{code},
+			</if>
+			<if test="title_cn != null">
+				title_cn = #{title_cn},
+			</if>
+			<if test="title_en != null">
+				title_en = #{title_en},
+			</if>
+			<if test="type != null">
+				type = #{type},
+			</if>
+			<if test="question_count != null">
+				question_count = #{question_count},
+			</if>
+			<if test="age_start != null">
+				age_start = #{age_start},
+			</if>
+			<if test="age_end != null">
+				age_end = #{age_end},
+			</if>
+			<if test="test_time_cost != null">
+				test_time_cost = #{test_time_cost},
+			</if>
+			<if test="brief != null">
+				brief = #{brief},
+			</if>
+			<if test="detail != null">
+				detail = #{detail},
+			</if>
+			<if test="guide != null">
+				guide = #{guide}
+			</if>
+		</set>
+		where (user_id = #{user_id} or #{user_id} = 1) and id = #{scale_id}
+	</update>
+
+	<insert id="insertScaleByImport" parameterType="java.util.List">
+		insert into
+		scale_info
+		(user_id,code,title_cn,title_en,type,question_count,age_start,age_end,test_time_cost,is_factor_visible,brief,detail,guide,create_time)
+		values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			(#{item.user_id},#{item.code},#{item.title_cn},#{item.title_en},#{item.type},#{item.question_count},
+			#{item.age_start},#{item.age_end},#{item.test_time_cost},#{item.is_factor_visible},#{item.brief},#{item.detail},#{item.guide},sysdate())
+		</foreach>
+	</insert>
+
+	<delete id="deleteScaleById" parameterType="java.util.HashMap">
+		DELETE FROM
+		scale_info WHERE id = #{scale_id}
+	</delete>
+
+	<delete id="deleteScaleTypeById" parameterType="java.util.HashMap">
+		DELETE FROM
+		scale_type WHERE id = #{scale_type_id}
+	</delete>
+
+	<!-- <insert id="insertFactorLevel" parameterType="java.util.HashMap"> <selectKey 
+		resultType="java.lang.Integer" keyProperty="id"> SELECT LAST_INSERT_ID() 
+		</selectKey> INSERT INTO factor_level_info (factor_id,team_id,level_id,level_range_min,level_range_max,result_explain,create_user_id,create_time) 
+		VALUES (#{factor_id},#{factor_id},#{factor_id},#{factor_id},#{factor_id},#{factor_id},#{factor_id},sysdate()) 
+		</insert> -->
+
+	<select id="queryFactorLevelByFactorId" parameterType="java.util.HashMap"
+		resultType="java.util.HashMap">
+		SELECT *
+		FROM factor_level_info a LEFT JOIN test_group_info b ON a.group_id=b.id
+		WHERE (a.create_user_id =
+		#{user_id} AND a.create_user_id != -1 or #{user_id} = 1) AND
+		a.factor_id = ${factor_id}
+		order by a.id
+	</select>
+
+	<insert id="insertFactorLevel" parameterType="java.util.HashMap">
+		INSERT INTO
+		factor_level_info
+		(factor_id,level_id,group_id,level_range_min,level_range_max,result_explain,result_advise,create_user_id,create_time)
+		VALUES
+		(#{factor_id},#{level_id},#{group_id},#{level_range_min},#{level_range_max},#{result_explain},#{result_advise},#{create_user_id},sysdate())
+	</insert>
+
+	<insert id="insertTestGroup" parameterType="java.util.HashMap">
+		INSERT INTO
+		test_group_info
+		(tg_title,tg_condition,tg_condition_title,scale_id,user_id,create_time)
+		VALUES
+		(#{tg_title},#{tg_condition},#{tg_condition_title},#{scale_id},#{user_id},sysdate())
+	</insert>
+
+	<update id="updateTestGroup" parameterType="java.util.HashMap">
+		UPDATE
+			test_group_info
+		<set>
+				<if test="tg_title != null">
+						tg_title = #{tg_title},
+				</if>
+				<if test="tg_condition != null">
+						tg_condition = #{tg_condition},
+				</if>
+				<if test="tg_condition_title">
+						tg_condition_title = #{tg_condition_title}
+				</if>
+		</set>
+		WHERE
+			id = #{id}
+	</update>
+
+	<select id="queryTestGroupByScaleId" parameterType="java.util.HashMap"
+		resultType="java.util.HashMap">
+		SELECT *
+		FROM test_group_info a
+		WHERE
+		a.user_id = #{user_id}
+		AND a.scale_id = #{scale_id}
+	</select>
+
+	<insert id="insertNorm" parameterType="java.util.HashMap">
+		INSERT INTO
+		norm_info
+		(factor_id,group_id,norm_value,scale_id,user_id,create_time)
+		VALUES
+		(#{factor_id},#{group_id},#{norm_value},#{scale_id},#{user_id},sysdate())
+	</insert>
+
+	<select id="queryNormByScaleId" parameterType="java.util.HashMap"
+		resultType="java.util.HashMap">
+		SELECT *
+		FROM norm_info a
+		LEFT JOIN factor_info b ON a.factor_id = b.id
+		LEFT JOIN test_group_info c
+		ON a.group_id = c.id
+		WHERE
+		a.user_id = #{user_id} AND a.scale_id =
+		#{scale_id}
+	</select>
+
+	<select id="queryNormById" parameterType="java.util.HashMap"
+		resultType="java.util.HashMap">
+		SELECT *
+		FROM norm_info a
+		WHERE
+		a.user_id = #{user_id} AND a.scale_id = #{scale_id} AND a.group_id = #{group_id} AND a.factor_id = #{factor_id}
+	</select>
+	
+	<select id="queryScaleBriefInfoById" parameterType="java.util.HashMap"
+		resultType="java.util.HashMap">
+		SELECT
+			a.title_cn,
+			a.title_en,
+			a.chart_type
+		FROM
+			scale_info a
+		WHERE
+			a.id = ${scale_id}
+	</select>
+	
+	<update id="updateFactor" parameterType="java.util.HashMap">
+		UPDATE
+			factor_info
+		<set>
+				<if test="factor_code != null">
+						factor_code = #{factor_code},
+				</if>
+				<if test="factor_title != null">
+						factor_title = #{factor_title},
+				</if>
+				<if test="factor_formula">
+						factor_formula = #{factor_formula}
+				</if>
+		</set>
+		WHERE
+			id = #{id}
+	</update>
+
+	<update id="updateFactorGroup" parameterType="java.util.HashMap">
+		UPDATE
+			factor_level_info
+		<set>
+				<if test="level_id != null">
+						level_id = #{level_id},
+				</if>
+				<if test="group_id != null">
+						group_id = #{group_id},
+				</if>
+				<if test="level_range_min != null">
+						level_range_min = #{level_range_min},
+				</if>
+				<if test="level_range_max != null">
+						level_range_max = #{level_range_max},
+				</if>
+				<if test="result_explain != null">
+						result_explain = #{result_explain},
+				</if>
+				<if test="result_advise != null">
+						result_advise = #{result_advise}
+				</if>
+		</set>
+		WHERE
+			id = #{id}
+	</update>
+	
+	<delete id="deleteFactorLevel" parameterType="java.util.HashMap">
+		DELETE FROM
+			factor_level_info
+		WHERE
+			id = #{id}
+	</delete>
+</mapper>

@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<!-- saved from url=(0104)http://www.obrsim.com/declaration/front/index/projectdetail.do?simresid=a9619a62d25b49e685b21696cb60c293 -->
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <link rel="shortcut icon" href="http://www.obrsim.com/" type="image/x-icon">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="front/sxsfdx/css/initial.css">
+    <link rel="stylesheet" type="text/css" href="front/sxsfdx/css/share.css">
+    <script type="text/javascript" src="front/sxsfdx/js/jquery-1.8.0.min.js"></script>
+    <script src="front/sxsfdx/js/jquery.media.js"></script>
+    <script src="front/sxsfdx/js/tools.js"></script>
+    <link rel="stylesheet" type="text/css" href="front/sxsfdx/css/index.css">
+    <script type="text/javascript" src="front/sxsfdx/js/echarts-all.js"></script>
+    <script type="text/javascript" src="front/sxsfdx/js/index.js"></script>
+    <link rel="stylesheet" href="front/sxsfdx/css/saj_main.css">
+    <script type="text/javascript" src="front/sxsfdx/js/saj_main.js"></script>
+    <link rel="stylesheet" href="front/sxsfdx/css/layui.css">
+    <script type="text/javascript" src="front/sxsfdx/js/layui.js"></script>
+    <link rel="stylesheet" href="front/sxsfdx/css/base.css">
+    <link rel="stylesheet" href="front/sxsfdx/css/footer.css">
+    <script src="front/sxsfdx/js/jquery.comment.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="front/sxsfdx/css/detail.css">
+    <link rel="stylesheet" href="front/sxsfdx/css/projectdetail.css">
+    <style>
+        .codebox {
+            position: absolute;
+            right: -140px;
+            top: 60px;
+            width: 100px;
+            height: 130px;
+            background-color: #fff;
+            padding: 10px;
+            border: 1px solid #eeeeee;
+        }
+
+        .codebox1 {
+            position: absolute;
+            right: -140px;
+            top: 230px;
+            width: 100px;
+            height: 130px;
+            background-color: #fff;
+            padding: 10px;
+            border: 1px solid #eeeeee;
+        }
+
+        .uc-ykt-coursecard-wrap_pic:after {
+            display: block;
+            clear: both;
+            content: '';
+            height: 0;
+            visibility: hidden;
+        }
+
+        .icon-box {
+            float: left;
+            margin-top: 8px;
+        }
+
+        .box-c-yd>div p {
+            font-size: 16px !important;
+            font-family: Microsoft YaHei, Arial, Helvetica, PingFang SC, sans-serif !important;
+            line-height: 32px !important;
+            text-indent: 2em !important;
+            text-align: justify !important;
+        }
+
+        .box-c-yd>div span {
+            font-size: 16px !important;
+            font-family: Microsoft YaHei, Arial, Helvetica, PingFang SC, sans-serif !important;
+        }
+
+        .summary-box>.summary-box-yd p {
+            font-size: 16px !important;
+            font-family: Microsoft YaHei, Arial, Helvetica, PingFang SC, sans-serif !important;
+            line-height: 32px !important;
+            text-indent: 2em !important;
+            text-align: justify !important;
+        }
+
+        .summary-box>.summary-box-yd span {
+            font-size: 16px !important;
+            font-family: Microsoft YaHei, Arial, Helvetica, PingFang SC, sans-serif !important;
+        }
+
+        .box-nav ul .active a {
+            font-weight: bold;
+        }
+
+        .box-nav ul li a {
+            font-weight: bold;
+        }
+
+        .yunnan-nav-txm {
+            position: relative;
+        }
+
+        .yunnan-nav-txm:before {
+            position: absolute;
+            bottom: 0;
+            content: '';
+            width: 1200px;
+            height: 1px;
+            background-color: #e9eaea;
+            left: -45px;
+        }
+
+        .uc-ykt-coursecard-wrap_pic img.pointer {
+            position: absolute;
+            right: 100px;
+            height: 32px;
+        }
+
+        /*.resource-c:hover .uc-ykt-coursecard-wrap_pic img.pointer{*/
+        /*animation: changeright 1s ease-in-out 0s 100 alternate ;*/
+        /*}*/
+        /*@keyframes changeright*/
+        /*{*/
+        /*0%{right: 100px;}*/
+        /*50%{right: 110px;}*/
+        /*100%{right: 100px;}*/
+        /*}*/
+
+        /*.resource-c:hover .uc-ykt-coursecard-wrap_pic img.pointer{*/
+        /*transform: translateX(-10px);*/
+        /*}*/
+        .choice ul {
+            border-bottom: 1px solid #dfdfdf;
+        }
+
+        .choice ul>li {
+            display: inline-block;
+            margin-right: 5px;
+            padding: 8px 15px;
+            border: 1px solid #dfdfdf;
+            cursor: pointer;
+            border-bottom: none;
+        }
+
+        .choice li.active {
+            border-bottom-color: #fff;
+            position: relative;
+            color: #499e50;
+        }
+
+        .choice li.active a {
+            color: #499e50;
+        }
+
+        .choice li.active:after {
+            content: '';
+            position: absolute;
+            height: 1px;
+            width: 100%;
+            background-color: #fff;
+            left: 0px;
+            bottom: -1px;
+        }
+
+        /*访问IP*/
+        .box-c-6 table {
+            text-align: center;
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .box-c-6 table tr {
+            height: 36px;
+        }
+
+        .box-c-6 thead tr,
+        .box-c-6 tbody tr:nth-child(even) {
+            background: #efefef;
+        }
+
+        .box-c-6 table th,
+        .box-c-6 table td {
+            padding: 0 8px;
+            border: 1px solid #dfdfdf;
+            color: #333;
+        }
+
+        /*完善用户信息弹窗*/
+        #addInformation {
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 9999;
+            text-align: center;
+            font-family: 'Microsoft YaHei';
+            /*display: none;*/
+        }
+
+        #addInformation.show {
+            display: block;
+        }
+
+        #addInformation.hide {
+            display: none;
+        }
+
+        .closeInformation {
+            cursor: pointer;
+            position: absolute;
+            right: 15px;
+            top: 15px;
+        }
+
+        .information-content {
+            display: inline-block;
+            vertical-align: middle;
+            position: relative;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            background: #fff;
+            padding: 40px 35px 10px;
+            text-align: center;
+        }
+
+        .information-content h2 {
+            width: 400px;
+            font-size: 20px;
+            color: #1c77c3;
+            text-align: center;
+            padding: 0 0 15px;
+            border-bottom: 1px solid #e1e1e1;
+            margin-bottom: 20px;
+        }
+    </style>
+    <script type="text/javascript">
+        //获取页面参数（后加，用于分页组件）
+        function GetQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]); return null;
+        }
+    </script>
+    <link id="layuicss-laydate" rel="stylesheet" href="front/sxsfdx/css/laydate.css" media="all">
+    <link id="layuicss-layer" rel="stylesheet" href="front/sxsfdx/css/layer.css" media="all">
+</head>
+
+<body>
+    <style>
+        .clearfix:after {
+            content: '';
+            height: 0;
+            display: block;
+            clear: both;
+            visibility: hidden;
+        }
+
+        .personMore:hover .hoverShow {
+            display: block;
+        }
+
+        .hoverShow {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 32px;
+            z-index: 9;
+            color: #434343;
+            text-align: center;
+        }
+
+        .hoverShow span {
+            display: inline-block;
+            width: 0;
+            height: 0;
+            border-bottom: 8px solid #f8fbff;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+        }
+
+        .hoverShow ul {
+            border: 1px solid #e4e5e8;
+            padding: 0 2px;
+            white-space: nowrap;
+            background: #f8fbff;
+        }
+
+        .hoverShow li {
+            padding: 5px 20px;
+        }
+
+        .hoverShow li:hover {
+            color: #1c77c3;
+        }
+
+        .hoverShow li+li {
+            border-top: 1px solid #e4e5e8;
+        }
+
+        .hoverShow li a {
+            color: inherit;
+        }
+
+        .x-hide {
+            -webkit-transition-property: opacity, -webkit-transform;
+            -o-transition-property: opacity, -webkit-transform;
+            transition-property: opacity, -webkit-transform;
+            -webkit-transition-duration: 0.15s;
+            -o-transition-duration: 0.15s;
+            transition-duration: 0.15s;
+            -webkit-transition-timing-function: ease-out;
+            -o-transition-timing-function: ease-out;
+            transition-timing-function: ease-out;
+            -webkit-transform: scale(0.9);
+            opacity: 0;
+            pointer-events: none;
+            display: none\9;
+            visibility: hidden;
+        }
+
+        .x-show {
+            opacity: 1;
+            -webkit-transform: scale(1);
+            pointer-events: all;
+            display: block\9;
+            visibility: visible;
+        }
+
+        #njgyOnline {
+            float: right;
+            display: block;
+            height: 78px;
+            line-height: 78px;
+            margin-right: 20px;
+            vertical-align: middle;
+            position: relative
+        }
+
+        .onlineList {
+            z-index: 99;
+            position: absolute;
+            top: 74px;
+            left: 0;
+            background-color: #fff;
+            width: 140px;
+            border: 1px solid #ddd;
+        }
+
+        .onlineList .arr {
+            top: -9px;
+            left: 58px;
+            width: 0;
+            height: 0;
+            display: inline-block;
+            position: absolute;
+            border-bottom: 9px solid #f8fbff;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+        }
+
+        .onlineList p.record-tit {
+            font-size: 14px;
+            color: #555555;
+            padding: 10px;
+            line-height: 19px;
+        }
+
+        .onlineList ul>li:hover {
+            background-color: #f6f6f6;
+        }
+
+        .onlineList ul>li:hover a {
+            color: #0093c8;
+        }
+
+        .onlineList .more {
+            line-height: 36px;
+            text-align: center;
+            cursor: pointer;
+            font-size: 12px;
+            color: #666;
+            background: #f6f6f6;
+        }
+
+        .onlineList .more:hover {
+            color: #0093c8;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        .show {
+            display: block;
+        }
+
+        .listFrame ul li {
+            height: 50px;
+            border-bottom: 1px solid #d8d8d8;
+            cursor: pointer;
+            padding: 5px 0;
+            margin: 0 40px;
+        }
+
+        .frameImg {
+            width: 80px;
+            height: 44px;
+            margin-left: 12px;
+            background-size: cover !important;
+            margin-top: 6px;
+            position: relative;
+        }
+
+        .frameImg>img {
+            display: block;
+            width: 41px;
+            height: 41px;
+            margin: 0 auto;
+        }
+
+        .iframe-c-r {
+            width: 560px;
+            margin-top: 10px;
+            margin-right: 10px;
+        }
+
+        .iframe-c-r .course-name {
+            color: #494949;
+            font-size: 14px;
+            line-height: 22px;
+            display: inline-block;
+            min-width: 90px;
+        }
+
+        .iframe-c-r .course-time {
+            color: #c6c6c6;
+            font-size: 14px;
+            display: inline-block;
+            margin-top: 6px;
+            display: inline-block;
+        }
+    </style>
+    <div style="background-color: #0275aa;font-family:'Microsoft YaHei';color:#fff;">
+        <div style="width:1200px;margin:0 auto;" class="clearfix">
+            <div style="float:left;display:block;line-height:78px;height: 78px; position: relative">
+
+
+                <a style="display:inline-block;height: 78px;" href="javascript:;">
+                    <img class="h-img" style="vertical-align: middle;display: inline-block;height: 84%;"
+                        src="front/sxsfdx/img/logosp_977.png" alt="山西省虚拟仿真实验教学申报项目"></a>
+                <span
+                    style="color:#fff;padding-left:20px; display: inline-block;letter-spacing: 2px;height: 78px;line-height: 78px;font-size: 24px;vertical-align: top;">山西省虚拟仿真实验教学申报项目</span>
+                <!-- -->
+            </div>
+            <!-- <div style="float:right;display:block;height:32px;line-height:32px;padding-top:23px;">
+                <div class="personMore" style="display:inline-block;position:relative;">
+                    <i class="layui-icon"
+                        style="font-size: 24px; color: #fff;display: inline-block;vertical-align: middle;"></i>
+                    <span>评审专家</span>
+                    <div class="hoverShow">
+                        <p style="line-height:8px;padding-top:10px;margin:0;"><span></span></p>
+                        <ul>
+                            <li>
+                                <a onclick="logoutDec();" href="javascript:void(0)">退出登录</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div> -->
+
+
+
+        </div>
+        <div class="" style="margin: 0px auto 10px;display: none;" id="listFrame">
+            <div class="listFrame" style="height: 480px;overflow: auto;padding: 0 20px;">
+                <ul>
+
+                </ul>
+            </div>
+            <div class="page1" style="text-align: center;" id="page2">
+                <div class="layui-box layui-laypage layui-laypage-default" id="layui-laypage-1"><span
+                        class="layui-laypage-count">共 0 条</span><a href="javascript:;"
+                        class="layui-laypage-prev layui-disabled" data-page="0">上一页</a><a href="javascript:;"
+                        class="layui-laypage-next layui-disabled" data-page="2">下一页</a></div>
+            </div>
+        </div>
+    </div>
+    <base href=".">
+    <link rel="stylesheet" href="front/sxsfdx/css/zTreeStyleNew.css" type="text/css">
+    <style type="text/css">
+        /*登录，注册层外框架，关闭图标*/
+        #loginFrame,
+        #registerFrame {
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 9999;
+            text-align: center;
+            font-family: 'Microsoft YaHei';
+            display: none;
+        }
+
+        .login-content,
+        .register-content {
+            display: inline-block;
+            vertical-align: middle;
+            position: relative;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            background: #fff;
+            padding: 40px 35px 10px;
+            text-align: center;
+        }
+
+        .closeLoginOrRegister {
+            cursor: pointer;
+            position: absolute;
+            right: 15px;
+            top: 15px;
+        }
+
+        /*登录层tab切换*/
+        #loginFrame .tab {
+            overflow: hidden;
+            display: inline-block;
+            margin-bottom: 30px;
+        }
+
+        #loginFrame .tab a {
+            float: left;
+            padding: 5px 20px;
+            border-bottom: 1px solid #e1e1e1;
+            color: #999999;
+            font-size: 16px;
+        }
+
+        #loginFrame .tab a.active {
+            color: #1c77c3;
+            border-bottom: 1px solid #1c77c3;
+        }
+
+        /*登录，注册层表单元素*/
+        .login-panel,
+        .register-panel {
+            margin-bottom: 10px;
+        }
+
+        .login-panel p {
+            margin-bottom: 20px;
+        }
+
+        .login-panel p:after,
+        .register-panel p:after {
+            content: '';
+            height: 0;
+            display: block;
+            clear: both;
+        }
+
+        .login-panel p>*,
+        .register-panel p>* {
+            float: left;
+        }
+
+        .login-panel p span,
+        .register-panel p span {
+            display: inline-block;
+            width: 40px;
+            height: 38px;
+            box-sizing: border-box;
+            border: 1px solid #c9c9c9;
+            border-right: 0;
+            background-image: url('/img/declaretion/userIcon.png');
+            background-repeat: no-repeat;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .login-panel p dl,
+        .register-panel p dl {
+            text-align: left;
+        }
+
+        .login-panel p .layui-input,
+        .login-panel p select,
+        .register-panel p .layui-input,
+        .register-panel p select {
+            width: 270px;
+            padding-left: 0;
+            border-radius: 0 3px 3px 0;
+            border-color: #c9c9c9;
+            border-left: 0;
+            font-size: 14px;
+        }
+
+        #loginBtn1,
+        #loginBtn2,
+        #registerBtn,
+        #registerBtnHid {
+            display: inline-block;
+            width: 310px;
+            color: #fff;
+            background: #1c77c3;
+            text-align: center;
+            height: 38px;
+            line-height: 38px;
+            font-size: 18px;
+            border-radius: 3px;
+        }
+
+        .login-panel2 {
+            display: none;
+        }
+
+        .login-panel p .yzm {
+            width: 136px;
+            margin-right: 14px;
+        }
+
+        .login-panel p .getyzm,
+        .register-panel p .getyzm {
+            display: inline-block;
+            width: 120px;
+            text-align: center;
+            height: 38px;
+            line-height: 38px;
+            color: #fff;
+            background: #39a9db;
+            border-radius: 3px;
+        }
+
+        /*注册层私有*/
+        #registerFrame h2 {
+            width: 400px;
+            font-size: 20px;
+            color: #1c77c3;
+            text-align: center;
+            padding: 0 0 15px;
+            border-bottom: 1px solid #e1e1e1;
+            margin-bottom: 20px;
+        }
+
+        .register-panel p {
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .register-panel p .layui-input,
+        .register-panel p select {
+            width: 320px;
+        }
+
+        .register-panel p label {
+            display: inline-block;
+            height: 38px;
+            line-height: 38px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+
+        .register-panel p .yzm {
+            width: 186px;
+            margin-right: 14px;
+        }
+
+        #registerBtn,
+        #registerBtnHid {
+            width: 360px;
+        }
+    </style>
+    <div id="loginFrame">
+        <div class="login-content">
+            <img class="closeLoginOrRegister" src="front/sxsfdx/img/closeLoginPanel.jpg" alt="">
+            <div class="tab">
+                <a href="javascript:void(0)" class="active">账号密码登录</a>
+                <a href="javascript:void(0)">手机验证码登录</a>
+            </div>
+            <div class="layui-form login-panel login-panel1">
+                <p>
+                    <span style="background-position:0 -52px;"></span>
+                    <input class="layui-input" name="account" id="account" placeholder="请输入登录账号" type="text">
+                </p>
+                <p>
+                    <span style="background-position:0 -104px;"></span>
+                    <input class="layui-input" name="password" id="passwords" placeholder="请输入登录密码" type="password">
+                </p>
+                <p>
+                    <a id="loginBtn1" onclick="userLogin(this)" href="javascript:void(0)">登录</a>
+                </p>
+                <p style="text-align: center;font-size: 16px;color: #f39237">忘记密码请使用手机验证码登录</p>
+            </div>
+            <div class="layui-form login-panel login-panel2">
+                <p>
+                    <span style="background-position:-42px 4px;"></span>
+                    <input class="layui-input" name="phone" id="phone" placeholder="请输入手机号" type="text">
+                </p>
+                <p>
+                    <span style="background-position:-41px -105px;"></span>
+                    <input class="layui-input yzm" name="yzm" id="yzm" placeholder="请输入验证码" type="text">
+                    <a href="javascript:getyzm()" class="getyzm" id="getyzm">获取验证码</a>
+                    <a href="javascript:return false;" class="getyzm" id="yzmdjs"
+                        style="opacity: 0.2;display: none">获取验证码</a>
+                </p>
+                <p>
+                    <a id="loginBtn2" onclick="loginByPhone(this)" href="javascript:void(0)">登录</a>
+                </p>
+            </div>
+        </div>
+        <div style="display:inline-block;height:100%;width:0;vertical-align:middle;"></div>
+    </div>
+    <div id="registerFrame">
+
+        <div class="register-content">
+            <img class="closeLoginOrRegister" src="front/sxsfdx/img/closeLoginPanel.jpg" width="13" height="12" alt="">
+            <h2>用户注册</h2>
+            <div class="layui-form register-panel">
+                <p>
+                    <span style="background-position:0 3px;"></span>
+                    <input class="layui-input" type="text" name="DEPARTMENTID_NAME" id="DEPARTMENTID_NAME"
+                        onclick="showMenu();" maxlength="255" placeholder="游客(未选择学校与专业的注册人员)" title="">
+                    <input type="hidden" name="DEPARTMENTID" id="DEPARTMENTID" value="2ce74e6f19c04ec59d26ce7a49022b7e">
+                </p>
+
+
+
+
+                <p>
+                    <label>职位：</label>
+                    <input type="radio" name="position" id="position" lay-filter="zhiwei" value="student" checked=""
+                        title="学生">
+                    <div class="layui-unselect layui-form-radio layui-form-radioed"><i
+                            class="layui-anim layui-icon"></i>
+                        <div>学生</div>
+                    </div>
+                    <input type="radio" name="position" lay-filter="zhiwei" value="teacher" title="教师">
+                    <div class="layui-unselect layui-form-radio"><i class="layui-anim layui-icon"></i>
+                        <div>教师</div>
+                    </div>
+                    <input type="radio" name="position" lay-filter="zhiwei" value="others" title="其他">
+                    <div class="layui-unselect layui-form-radio"><i class="layui-anim layui-icon"></i>
+                        <div>其他</div>
+                    </div>
+                </p>
+                <p>
+                    <span style="background-position:0 -52px;"></span>
+                    <input class="layui-input" name="stuNumber" id="stuNumber" placeholder="请输入学号或工号" type="text">
+                </p>
+                <p>
+                    <span style="background-position:0 -52px;"></span>
+                    <input class="layui-input" name="realName" id="realName" placeholder="请输入真实姓名" type="text">
+                </p>
+                <p id="cert" style="display: none">
+
+                    <button class="layui-btn" id="TEACHERCERT" style="width:110px;text-align:center;padding:0;"><i
+                            class="layui-icon"></i>上传教师证</button><input class="layui-upload-file" type="file"
+                        name="file">
+                    <input class="layui-input" name="TEACHERCERT" style="width:250px;" type="text" placeholder="  非必须上传"
+                        readonly="">
+                </p>
+                <p>
+                    <span style="background-position:0 -104px;"></span>
+                    <input class="layui-input" name="pwd" id="pwd" placeholder="请输入密码" type="password">
+                </p>
+                <p>
+                    <span style="background-position:0 -104px;"></span>
+                    <input class="layui-input" name="ensurePwd" id="ensurePwd" placeholder="请确认密码" type="password">
+                </p>
+                <p>
+                    <span style="background-position:-42px 4px;"></span>
+                    <input class="layui-input" name="tel" id="tel" placeholder="请输入11位手机号" type="text">
+                </p>
+                <p style="text-align:left;color:#f39237;padding-left:23px;">可通过手机号码快速登录！</p>
+                <p>
+                    <span style="background-position:-41px -105px;"></span>
+                    <input class="layui-input yzm" name="regyzm" id="regyzm" placeholder="请输入验证码" type="text">
+                    <a href="javascript:getregyzm();" class="getyzm" id="getregyzm">获取验证码</a>
+                    <a href="javascript:return false;" class="getyzm" id="regyzmdjs"
+                        style="opacity: 0.2;display: none">获取验证码</a>
+                </p>
+                <p>
+                    <a id="registerBtn" href="javascript:void(0)" onclick="registerNewUser();">注册</a>
+                    <a id="registerBtnHid" style="display: none" href="javascript:void(0)">注册</a>
+                </p>
+            </div>
+        </div>
+        <div id="menuContent" class="menuContent"
+            style="display:none; position: absolute;z-index: 999;background-color: #EFF0F2">
+            <ul id="treeDemo" class="ztree" style="margin-top:0; width:260px;max-height:300px;overflow: auto"></ul>
+        </div>
+        <div style="display:inline-block;height:100%;width:0;vertical-align:middle;"></div>
+    </div>
+
+    <script type="text/javascript" src="front/sxsfdx/js/ztree-all.min.js"></script>
+    <script type="text/javascript" src="front/sxsfdx/js/jquery.ztree.exhide.min.js"></script>
+
+    <script>
+
+        layui.use(["laydate", "form", "upload"], function () {
+            var laydate = layui.laydate,
+                form = layui.form,
+                upload = layui.upload;
+            //监听radio事件
+            form.on('radio(zhiwei)', function (data) {
+                if (data.value == 'teacher') {
+                    $("#cert").show();
+                } else {
+                    $("#cert").hide();
+                }
+            });
+
+            upload.render({
+                elem: '#TEACHERCERT'
+                , url: '/common/upload.do?dir=cert'
+                , accept: 'images'
+                , done: function (res, index, upload) {
+                    //上传成功
+                    $('[name="TEACHERCERT"]').val(res.path);
+                }
+                , error: function (index, upload) {
+                    //上传失败
+                }
+            });
+        })
+    </script>
+    <script type="text/javascript">
+        /*组织机构start*/
+        var zTreeObj;
+        var setting = {
+            showLine: true,
+            checkable: false,
+            data: {
+                key: {
+                    name: "NAME"
+                },
+                simpleData: {
+                    enable: true,
+                    idKey: "DEPARTMENT_ID",
+                    pIdKey: "PARENT_ID",
+                    rootPId: "0"
+                }
+            },
+            callback: {
+                onClick: selectDepartment
+            }
+        };
+        function selectDepartment(e, treeId, treeNode) {
+            $("#DEPARTMENTID").val(treeNode.DEPARTMENT_ID);
+            var fullName = treeNode.NAME;
+            while (treeNode.getParentNode() != null && treeNode.getParentNode().getParentNode() != null && treeNode.getParentNode().getParentNode().PARENT_ID != 0) {
+                treeNode = treeNode.getParentNode();
+                fullName = treeNode.NAME + fullName;
+            }
+            $("#DEPARTMENTID_NAME").val(fullName);
+            hideMenu();
+        }
+
+        var currentPanel = 0;
+        $(document).ready(function () {
+            $("body").keydown(function (e) {
+                e = e || window.event;
+                if (e.keyCode == 13) {
+                    switch (currentPanel) {
+                        case 1:
+                            $("#loginBtn1").click();
+                            break;
+                        case 2:
+                            $("#loginBtn2").click();
+                            break;
+                        case 3:
+                            $("#registerBtn").click();
+                    }
+                }
+            })
+
+            parent.middleIds = "";
+            parent.middleNames = "";
+            //ajax查询zTreeNodes
+            $.ajax({
+                type: "POST",
+                url: '/declaration/front/index/zTreeNodes.do',
+                //data:{DATA_IDS:str},
+                dataType: 'json',
+                //beforeSend: validateData,
+                cache: false,
+                success: function (data) {
+                    var zNodes = JSON.parse(data.zNodes);
+                    zTreeObj = $.fn.zTree.init($("#treeDemo"), setting, zNodes);
+                }
+            });
+
+            SetTreeSearch("DEPARTMENTID_NAME", "treeDemo");
+
+        });
+
+        function showMenu() {
+            var cityObj = $("#DEPARTMENTID_NAME");
+            var cityOffset = $("#DEPARTMENTID_NAME").offset();
+            $("#menuContent").css({ left: cityOffset.left + "px", top: cityOffset.top + cityObj.outerHeight() + "px" }).slideDown("fast");
+            $("body").bind("mousedown", onBodyDown);
+            zTreeObj.expandAll(true);
+        }
+        function hideMenu() {
+            //        if($("#DEPARTMENTID").val()!="2ce74e6f19c04ec59d26ce7a49022b7e"){
+            //            $("#pcode").show();
+            //        }else{
+            //            $("#pcode").hide();
+            //        }
+            $("#menuContent").fadeOut("fast");
+            $("body").unbind("mousedown", onBodyDown);
+        }
+        function onBodyDown(event) {
+            if (!(event.target.id == "menuBtn" || event.target.id == "menuContent" || $(event.target).parents("#menuContent").length > 0)) {
+                hideMenu();
+            }
+        }
+    </script>
+    <script type="text/javascript">
+        $(function () {
+            $("#njgyOnline").on('mouseenter', function () {
+                $("#njgyOnline").find('.onlineList').addClass('x-show');
+            })
+            $("#njgyOnline").on('mouseleave', function () {
+                $("#njgyOnline").find('.onlineList').removeClass('x-show');
+            })
+            $('.more').click(function (event) {
+                event.preventDefault();
+                moreLayer();
+            })
+            loadList(1, 10);
+        })
+        function logoutDec() {
+            layui.use('layer', function () {
+                var layer = layui.layer;
+                layer.confirm('确定退出吗', {
+                    btn: ['确定', '取消'] //按钮
+                }, function () {
+                    var schoolCode = "sxsfspkx";
+                    window.location.href = "/declaration/front/index/logout.do?type=logoutDec&schoolCode=" + schoolCode;
+                }, function () {
+
+                });
+            });
+        }
+        //弹出更多评论页
+        function moreLayer() {
+            layui.use(["layer"], function () {
+                var layer = layui.layer;
+                layer.open({
+                    title: "在线人数列表",
+                    type: 1,
+                    area: ["804px", "600px"],
+                    maxmin: true,
+                    content: $('#listFrame')
+                })
+            });
+        }
+        function loadList(page, limit) {
+            var lis = $('#listFrame').find('li');
+            lis.removeClass('show').addClass('hide')
+            for (var i = limit * (page - 1); i < limit * (page); i++) {
+                lis.eq(i).addClass('show');
+            }
+        }
+        layui.use('laypage', function () {
+            var laypage = layui.laypage;
+            //执行一个laypage实例
+
+            laypage.render({
+                elem: 'page2',
+                count: '',
+                curr: page,
+                limit: 10,
+                layout: ['count', 'prev', 'page', 'next'],
+                jump: function (obj, first) {
+                    console.log(obj.curr); //得到当前页，以便向服务端请求对应页的数据。
+                    console.log(obj.limit); //得到每页显示的条数
+                    loadList(obj.curr, obj.limit);
+                }
+            });
+        });
+    </script>
+    <div id="content">
+        <div style="height:20px;line-height:20px;background:#dd3232;color:#fff;display:none;" id="onlineAndQueueInfo">
+            <p style="width:1200px;margin:0 auto;">当前在线人数：<span id="currentOnline"></span>， 排队人数：<span
+                    id="currentQueueing"></span></p>
+        </div>
+        <input type="hidden" id="hiddenBaseUrl" value="">
+        <div class="banner" style="position:relative;">
+            <div class="section">
+                <div class="section-t clearfix">
+                    <div class="fl summary">
+                        <div class="summary-box">
+                            <h2>申报项目</h2>
+                            <div class=" " style="color: #434343;font-size: 16px;line-height:30px;font-weight: normal;">
+                                <p style="line-height: 1.75em;"><span style="font-size:16px;font-family:仿宋"><span
+                                            style="font-size:16px;font-family:仿宋">&nbsp; &nbsp; </span><span
+                                            style="font-family: 宋体, SimSun; font-size: 14px;"><span
+                                                style="font-family: 宋体, SimSun;">心理沙盘虚拟仿真实验教学是虚拟现实技术与心理沙盘技术的融合.该项目以心理沙盘的操作过程为对象，通过虚拟仿真实验教学软件的学习操作，以移动沙子、播放引导语、选择沙具、摆放沙具、整理沙具、作品分析、拆除沙盘等为主要知识点，通过虚拟现实实时再现心理沙盘的制作场景，帮助学生了解和熟悉心理沙盘，熟练掌握心理沙盘进行心理疏导的完整过程，提高学生运用心理沙盘分析心理问题和解决心理问题的能力，为将来有效从事学校心理健康教育奠定基础。该实验教学更新了教育教学理念，创新了研究方法，为教学提供了强大的学习平台，让学生带着兴趣学习、体验和成长。</span>&nbsp;
+                                            &nbsp; &nbsp;</span></span></p>
+                                <p><span style="font-size:16px;font-family:仿宋">&nbsp; &nbsp;&nbsp;</span></p>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="fr section-video">
+                        <div class="video-box">
+                            <div class="video-img-box" style="position:relative;">
+                                <img width="550" height="270" src="front/sxsfdx/img/video_cover.jpg">
+                                <i></i>
+                            </div>
+                            <!-- <video src="http://ppbvnvlsp.bkt.clouddn.com/xlszsp.mp4" preload="" controls=""></video> -->
+                            <video src="http://xlcpedu.cdn.psycloud.com.cn/sxsfdx/xlszsp.mp4" preload="" controls=""></video>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-nav">
+                    <ul>
+                        <li class="box-li" index="0"><a href="javascript:;">项目团队</a></li>
+                        <li class="box-li" index="1"><a href="javascript:;">项目描述</a></li>
+                        <li class="box-li" index="2"><a href="javascript:;">网络要求</a></li>
+                        <li class="box-li active" index="3"><a href="javascript:;">技术架构</a></li>
+                        <li class="box-li" index="4"><a href="javascript:;">项目特色</a></li>
+                        <li class="box-li" index="5"><a href="javascript:;">服务计划</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="projectdetail-box">
+                <div class="comment softdetail clearfix">
+                    <div class="">
+                        <div class="box-c box-c-1" style="display: none; padding: 30px 45px;">
+                            <div>
+                                <h3 style="text-align: center; font-size: 22px;line-height:40px;font-weight: bold;">项目团队
+                                </h3>
+                                <div style="width:1100px;height:800px;">
+                                    <!-- <iframe src="http://ppbvnvlsp.bkt.clouddn.com/1.pdf" width="100%" height="100%"
+                                        frameborder="0">
+                                    </iframe> -->
+                                    <iframe src="http://xlcpedu.cdn.psycloud.com.cn/sxsfdx/1.pdf" width="100%" height="100%"
+                                        frameborder="0">
+                                    </iframe>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-c box-c-2" style="display:none; padding: 30px 45px;">
+                            <div>
+                                <h3 style="text-align: center; font-size: 22px;line-height:40px;font-weight: bold;">项目描述
+                                </h3>
+                                <div style="width:1100px;height:800px;">
+                                    <!-- <iframe src="http://ppbvnvlsp.bkt.clouddn.com/2.pdf" width="100%" height="100%"
+                                        frameborder="0">
+                                    </iframe> -->
+                                    <iframe src="http://xlcpedu.cdn.psycloud.com.cn/sxsfdx/2.pdf" width="100%" height="100%"
+                                        frameborder="0">
+                                    </iframe>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-c box-c-3" style="display:none; padding: 30px 45px;">
+                            <div>
+                                <h3 style="text-align: center; font-size: 22px;line-height:40px;font-weight: bold;">网络要求
+                                </h3>
+                                <div style="width:1100px;height:800px;">
+                                    <!-- <iframe id="pdfIfms3" src="http://ppbvnvlsp.bkt.clouddn.com/3.pdf" width="100%"
+                                        height="100%" frameborder="0"></iframe> -->
+                                    <iframe id="pdfIfms3" src="http://xlcpedu.cdn.psycloud.com.cn/sxsfdx/3.pdf" width="100%"
+                                        height="100%" frameborder="0"></iframe>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-c box-c-4" style="display: block;padding: 30px 45px;">
+                            <div>
+                                <h3 style="text-align: center; font-size: 22px;line-height:40px;font-weight: bold;">技术架构
+                                </h3>
+                                <div style="width:1100px;height:800px;">
+                                    <!-- <iframe id="pdfIfms3" src="http://ppbvnvlsp.bkt.clouddn.com/4.pdf" width="100%"
+                                        height="100%" frameborder="0"></iframe> -->
+                                    <iframe id="pdfIfms3" src="http://xlcpedu.cdn.psycloud.com.cn/sxsfdx/4.pdf" width="100%"
+                                        height="100%" frameborder="0"></iframe>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-c box-c-5" style="display:none; padding: 30px 45px;">
+                            <div>
+                                <h3 style="text-align: center; font-size: 22px;line-height:40px;font-weight: bold;">项目特色
+                                </h3>
+                                <div style="width:1100px;height:800px;">
+                                    <iframe id="pdfIfms3" src="5.html" width="100%" height="100%"
+                                        frameborder="0"></iframe>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-c box-c-6" style="display:none; padding: 30px 45px;">
+                            <div>
+                                <h3 style="text-align: center; font-size: 22px;line-height:40px;font-weight: bold;">服务计划
+                                </h3>
+                                <div style="width:1100px;height:800px;">
+                                    <iframe id="pdfIfms3" src="6.html" width="100%" height="100%"
+                                        frameborder="0"></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="codebox" style="display: none;">
+                <div id="qrcode"></div>
+                <div
+                    style="color: #1c77c3; text-align: center;height: 36px; line-height: 36px;font-size: 14px;font-weight: bold;margin-top: 2px;">
+                    扫码查看flash
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="addInformation" class="hide">
+        <div class="information-content">
+            <img class="closeInformation" src="front/sxsfdx/img/closeLoginPanel.jpg" width="15" height="15" alt="">
+            <h2>完善信息</h2>
+            <div class="layui-form register-panel">
+                <p>
+                    <span style="background-position:0 3px;"></span>
+                    <input class="layui-input" type="text" name="DEPARTMENTID_NAME1" id="DEPARTMENTID_NAME1"
+                        onclick="showMenuInfor();" maxlength="255" placeholder="游客(未选择学校与专业的注册人员)" title="">
+                    <input type="hidden" name="DEPARTMENTID1" id="DEPARTMENTID1"
+                        value="2ce74e6f19c04ec59d26ce7a49022b7e">
+                </p>
+                <p>
+                    <label>职位：</label>
+                    <input type="radio" name="position1" id="position" lay-filter="zhiwei1" value="student" checked=""
+                        title="学生">
+                    <div class="layui-unselect layui-form-radio layui-form-radioed"><i
+                            class="layui-anim layui-icon"></i>
+                        <div>学生</div>
+                    </div>
+                    <input type="radio" name="position1" lay-filter="zhiwei1" value="teacher" title="教师">
+                    <div class="layui-unselect layui-form-radio"><i class="layui-anim layui-icon"></i>
+                        <div>教师</div>
+                    </div>
+                    <input type="radio" name="position1" lay-filter="zhiwei1" value="others" title="其他">
+                    <div class="layui-unselect layui-form-radio"><i class="layui-anim layui-icon"></i>
+                        <div>其他</div>
+                    </div>
+                </p>
+                <p>
+                    <span style="background-position:-42px 4px;"></span>
+                    <input class="layui-input" name="telInfor" id="telInfor" placeholder="请输入11位手机号" type="text">
+                </p>
+
+                <p>
+                    <span style="background-position:-41px -105px;"></span>
+                    <input class="layui-input yzm" name="regyzm1" id="regyzm1" placeholder="请输入验证码" type="text">
+                    <a href="javascript:getregyzm();" class="getyzm" id="getregyzmInfor">获取验证码</a>
+                    <a href="javascript:return false;" class="getyzm" id="regyzmdjsInfor"
+                        style="opacity: 0.2;display: none">获取验证码</a>
+                </p>
+                <p>
+                    <a id="registerBtn" href="javascript:void(0)" onclick="upUserInfo()">确定</a>
+                </p>
+            </div>
+        </div>
+        <div id="menuContent1" class="menuContent"
+            style="display:none; position: absolute;z-index: 999;background-color: #EFF0F2">
+            <ul id="treeDemo1" class="ztree" style="margin-top:0; width:260px;max-height:226px;overflow: auto"></ul>
+        </div>
+        <div style="display:inline-block;height:100%;width:0;vertical-align:middle;"></div>
+    </div>
+
+
+    <script>
+        root = '';
+        var themeid = "a9619a62d25b49e685b21696cb60c293";
+        var userid = "b0ace47e5c9941ee992da6923e8bdfbe";//当前登录用户id
+        var name = "评审专家";//当前登录用户姓名
+        var bianma = 411401011801; //当前学院的编码
+
+        var thissimresid = "a9619a62d25b49e685b21696cb60c293";//当前项目id
+        var authorization = true;
+        var page = "";
+        var count = "";
+        $(function () {
+            var lis = $('.box-nav').find('.box-li');
+            for (i = 0; i < lis.length; i++) {
+                $(lis[i]).attr('index', i);
+                $(lis[i]).on('click', function () {
+                    var index = $(this).attr('index');
+                    //                console.log(index);
+                    for (var j = 0; j < $('.box-c').length; j++) {
+                        $($('.box-c')[j]).css({ 'display': 'none' })
+                    }
+                    $($('.box-c')[index]).css({ 'display': 'block' });
+                    $(this).siblings('li').removeClass('active');
+                    $(this).addClass("active");
+                })
+            }
+            $('.video-img-box').on('mouseenter', function () {
+                $('.video-box').find('video').css({ 'display': 'block' });
+                $('.video-img-box').find('img').css({ 'display': 'none' });
+            })
+        })
+    </script>
+    <script>
+        $(function () {
+            $('.moreComment').click(function (event) {
+                event.preventDefault();
+                moreCommentLayer();
+            })
+        })
+    </script>
+
+    <div class="footer school">
+        <div class="footer-t ">
+            <div class="banner">
+                <p>版权所有：山西师范大学心理学院&nbsp;&nbsp;&nbsp;&nbsp;技术支持：北京心云天地科技有限公司 </p>
+                <p>地址：山西省临汾市贡院街1号&nbsp;&nbsp;电话：03572051247 &nbsp;&nbsp;邮政编码：&nbsp;&nbsp;邮箱：</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="front/sxsfdx/js/qrcode.min.js"></script>
+    <script type="text/javascript">
+        window.onload = function () {
+            if (thissimresid == "015862087b1a4684b9d20d76d45d39ea") {
+                //            本地测试id
+                //        if(thissimresid =="06c9e933aaee4d57bce9739ed7b6353d"){
+                document.getElementsByClassName('codebox')[0].style.display = 'block';
+                var url2 = 'http://' + window.location.host;
+                //            var url2 = 'http:192.168.1.39:8089'
+
+                url2 += '/declaration/front/index/phoneFlash';
+                var qrcode = new QRCode(document.getElementById("qrcode"), {
+                    width: 100,
+                    height: 100
+                });
+                console.log(url2);
+                qrcode.makeCode(url2);
+            }
+        }
+    </script>
+
+    <script type="text/javascript">
+        $(function () {
+            function initCurrentOnlineAndQueueInfo() {
+                var currentOnline = parseInt(Math.random() * 100 + 475, 10),
+                    currentQueueing = currentOnline - 530 > 0 ? currentOnline - 530 : 0;
+                $("#currentOnline").text(currentOnline);
+                $("#currentQueueing").text(currentQueueing);
+            }
+            if (themeid == '3ed4feb0d0434171aa05eaf502f0ac86') {
+                $("#onlineAndQueueInfo").show();
+                initCurrentOnlineAndQueueInfo();
+                setInterval(initCurrentOnlineAndQueueInfo, 10000);
+            }
+        })
+    </script>
+
+    <script type="text/javascript">
+        function changeView(view, dom) {
+            $(dom).parent('li').siblings('li').removeClass('active');
+            $(dom).parent('li').addClass('active');
+        }
+    </script>
+
+    <script type="text/javascript" src="front/sxsfdx/js/ztree-all.min.js"></script>
+    <script type="text/javascript" src="front/sxsfdx/js/jquery.ztree.exhide.min.js"></script>
+    <script>
+        function changeFrameHeight(that) {
+            $(that).height(document.documentElement.clientHeight);
+        }
+
+        $(".closeInformation").click(function () {
+            $("#addInformation").hide();
+        })
+    </script>
+
+
+    <ul class="layui-fixbar">
+        <li class="layui-icon layui-fixbar-top" lay-type="top"></li>
+    </ul>
+</body>
+
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	 <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>心云天地-新闻资讯</title>
+	<!-- Bootstrap -->
+    <link href="front/css/bootstrap.css" rel="stylesheet">
+    <link href="front/css/base.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+	<nav class="navbar navbar-fixed-top" id="main_menu">
+	</nav>
+
+	<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+		<!-- Wrapper for slides -->
+		<div class="carousel-inner" role="listbox">
+			<div class="item active">
+				<a href="#"><img src="front/img/banner_news.jpg" alt="..." data-src="front/images/banner_news.jpg"></a>
+				<div class="carousel-caption">
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<ol class="breadcrumb">
+			<li><a href="index.html">首页</a></li>
+			<li class="active"> 新闻资讯</li>
+		</ol>
+	</div>
+
+
+	<div class="container">
+		<div class="space20"></div>
+		<div class="row">
+			<div class="left-list">
+				<ul class="list-unstyled list-menu" role="list-link">
+					
+				</ul>
+			</div>
+			<div class="right-content">
+				<div class="content-tab" id="solution_content" role="main-tabs">
+					<table class="content-main table" style="vertical-align: middle;">
+						
+					</table>
+				</div>
+			</div>
+		</div>
+		<div class="space20"></div>
+		<div class="space20"></div>
+		<div class="space20"></div>
+	</div>
+
+	<div id="footerInfo"></div>
+
+ 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="front/js/jquery-3.1.0.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="front/js/bootstrap.min.js"></script>
+    <script src="front/js/data.js"></script>
+    <script src="front/js/base.js"></script>
+    <script type="text/javascript">
+    	$(function(){
+    		setMenusActivity(5);//设置菜单激活状态
+
+    		var type = GetQueryString("type");
+    		content = $("div[role=main-tabs] table.content-main");
+    		content.html("");
+			$.each(news,function(i,item){
+    			if(item.type == type){
+    				var items = item.items;
+    				var size = items.length-1;
+					var _news = {};
+    				for(i=size;i>=0;i--){
+    					_news = items[i];
+    					var d0 = document.createElement("tr");
+    					var d01 = document.createElement("td");
+    					$(d01).attr("width","30%");
+    					if(_news.cover){
+    						$(d01).append("<img src='"+_news.cover+"' alt='"+_news.title+"' width='100%'>")
+    					}else{
+    						$(d01).append("<img src='front/img/placeholder_news.jpg' alt='"+_news.title+"' width='100%'>")
+    					}
+    					var d02 = document.createElement("td");
+    					$(d02).attr("width","70%").append("<a href='newsDetail.html?type="+item.type+"&id="+_news.id+"' target='_blank'><h5>"+_news.title+"</h5>"
+                                +"<p>"+_news.abstract+"...</p>"
+                                +"<h6 class='grey'><span><span class='glyphicon glyphicon-time' aria-hidden='true'></span> "+_news.time+"</span>"
+                                + "<span class='pull-right'>详情 &gt;</span><h6></a>");
+	    				$(d0).append(d01,d02);
+	    				content.append(d0);
+    				}
+    			}
+    			 li = $(document.createElement("li"));
+    			 li.append("<a href='javascript:;' data-type="+item.type+">"+item.title+"</a>");
+    			 $("ul[role=list-link]").append(li);
+    		})
+    		var a = $("ul[role=list-link] a[data-type="+type+"]");
+    		var li = a.parent();
+    		li.addClass("active");
+
+    		$("ul[role=list-link] a").bind('click',function(){
+    			$("ul[role=list-link] li").removeClass("active");
+    			type = $(this).attr("data-type");
+    			content.html("");
+    			$.each(news,function(i,item){
+	    			if(item.type == type){
+	    				var items = item.items;
+    				var size = items.length-1;
+					var _news = {};
+    				for(i=size;i>=0;i--){
+    					_news = items[i];
+    					var d0 = document.createElement("tr");
+                        var d01 = document.createElement("td");
+                        $(d01).attr("width","30%");
+    					if(_news.cover){
+    						$(d01).append("<img src='"+_news.cover+"' alt='"+_news.title+"' width='100%'>")
+    					}else{
+    						$(d01).append("<img src='front/img/placeholder_news.jpg' alt='"+_news.title+"' width='100%'>")
+    					}
+    					var d02 = document.createElement("td");
+    					$(d02).attr("width","70%").append("<a href='newsDetail.html?type="+item.type+"&id="+_news.id+" ' target='_blank'><h5>"+_news.title+"</h5>"
+                                +"<p>"+_news.abstract+"...</p>"
+                                +"<h6 class='grey'><span><span class='glyphicon glyphicon-time' aria-hidden='true'></span> "+_news.time+"</span>"
+                                +"<span class='pull-right'>详情 &gt;</span><h6></a>");
+	    				$(d0).append(d01,d02);
+	    				content.append(d0);
+    				}
+	    			}
+	    		})
+	    		var a = $("ul[role=list-link] a[data-type="+type+"]");
+	    		var li = a.parent();
+	    		li.addClass("active");
+    		})
+    	})
+    </script>
+</body>
+</html>

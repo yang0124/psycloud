@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>PsyCloud综合心理实验台</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<script rel="stylesheet" type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+	<script rel="stylesheet" type="text/javascript" src="js/bootstrap.min.js"></script>
+</head>
+<body>
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+		<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a href="#">
+					<img src="img/logo.png" class="navbar-brand" style="padding-top: 5px; padding-bottom: 5px;" >
+					<!-- <span class="navbar-brand" style="color: #fff;"> PsyCloud综合心理实验台</span> -->
+				</a>
+			</div>
+		</div><!-- /.container-fluid -->
+	</nav>
+
+	<div class="container-fluid" style="max-width: 1400px;">
+		<div class="row">
+			<div class="col-xs-12 text-center">
+				<h1 style="color: #0b58a8;font-size: 40px;">PsyCloud综合心理实验台</h1>
+			</div>
+		</div>
+		<div class="row" style="margin-top: 30px; ">
+			<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3" style="margin-bottom: 20px; ">
+				<a href="http://syjx.psycloud.com.cn:8080/syjx/" target="_blank"><img src="img/portfolio_pic1.png" class="img-responsive center-block"></a>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3" style="margin-bottom: 20px; ">
+				<a href="http://xyjx.psycloud.com.cn:8080/xyjx/" target="_blank"><img src="img/portfolio_pic2.png" class="img-responsive center-block"></a>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3" style="margin-bottom: 20px; ">
+				<a href="http://ceds.psycloud.com.cn:8090/ceds" target="_blank"><img src="img/portfolio_pic3.png" class="img-responsive center-block"></a>
+			</div>
+		</div>
+	</div>
+	<div class="container-fluid">
+		<div style="background: #000; height: 35px; position: absolute;bottom: 0; left: 0; width: 100%; line-height: 35px; font-size: 14px;color: #fff;">
+			<div class="col-xs-12 text-center">
+				Copyright &copy; 2016 北京心云天地科技有限公司 All rights reserved。
+			</div>
+		</div>
+	</div>
+<script type="text/javascript">
+	$(function(){
+		setInterval("autochange()",60000);
+	})
+	function autochange(){
+		var t = getRandomNum(28,40);
+		var h = getRandomNum(30,60);
+		var v = getRandomNum(10,50);
+		var l = getRandomNum(100,550);
+		/*alert(t+"，"+h+"，"+v+"，"+l);*/
+		$("#temperature").html(t);
+		$("#humidity").html(h);
+		$("#voice").html(v);
+		$("#light").html(l);
+
+	}
+	function getRandomNum(Min,Max)
+	{   
+		var Range = Max - Min;   
+		var Rand = Math.random();   
+		return(Min + Math.round(Rand * Range));   
+	}
+</script>
+</body>
+</html>
